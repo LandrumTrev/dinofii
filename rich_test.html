@@ -39,27 +39,9 @@
                 <option value="featureCode=BOG&">bog(s)</option>
                 <option value="featureCode=CAPG&">icecap</option>
             </select>
-            <div class="input-group-append">
+            <!-- <div class="input-group-append">
                 <button class="addNewField btn btn-outline-secondary" type="button">+</button>
-            </div>
-        </div>
-        <div class="input-group">
-            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option value="" selected>select a feature:</option>
-                <option value="featureCode=AIRS&">seaplane landing area</option>
-                <option value="featureCode=ANCH&">anchorage</option>
-                <option value="featureCode=BAY&">bay</option>
-                <option value="featureCode=BAYS&">bays</option>
-                <option value="featureCode=BGHT&">bight(s)</option>
-                <option value="featureCode=BNK&">bank(s)</option>
-                <option value="featureCode=BNKR&">stream bank</option>
-                <option value="featureCode=BNKX&">section of bank</option>
-                <option value="featureCode=BOG&">bog(s)</option>
-                <option value="featureCode=CAPG&">icecap</option>
-            </select>
-            <div class="input-group-append">
-                <button class="addNewField btn btn-outline-secondary" type="button">+</button>
-            </div>
+            </div> -->
         </div>
         <br>
         <input id="search_btn" type="submit" class="btn btn-primary" name="x" value="SEARCH">
@@ -68,9 +50,6 @@
     <!-- 
 TURN THIS DATA INTO A JAVASCRIPT ARRAY OF OBJECTS, WHICH WILL THEN BUILD ALL THE <option></option> ELEMENTS
 FOR THE SELECT FIELD.
-
-AND, WE NEED A WAY TO KEEP ADDING ADDITIONAL SELECT FIELDS: EITHER A NEW BLANK SELECT FIELD IS PRODUCED
-EVERY TIME SOMEONE MAKES A SELECTION, OR, USE THE PLUS (+) BUTTON NEXT TO THE SELECT FIELD THAT ADDS A NEW SELECT FIELD
 
 FOR THE value="" NAME, IGNORE THE FIRST LETTER AND ., JUST USE REST OF CODE,
 AND THAT CODE NEEDS TO HAVE featureCode= BEFORE IT, AND & AFTER IT, SO FOR "H.AIRS", IT WOULD BE value="featureCode=AIRS&"
@@ -753,7 +732,6 @@ V.VINS	vineyards	plantings of grapevines
 
 
 
-
     <script>
         // START jQUERY FUNCTION
         // ----------------------------------------------------------------
@@ -768,7 +746,7 @@ V.VINS	vineyards	plantings of grapevines
                 var featureCodes;
                 // the value of featureCodes will need to look like this?
                 // multiple 
-                featureCodes = "featureCode=PYR&featureCode=PYRS&";
+                featureCodes = "featureCode=BAY&";
 
                 // USE jQuery .serializeArray to create an Array of Objects.
                 // Array should look like: 
