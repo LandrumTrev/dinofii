@@ -1,59 +1,70 @@
+// test to make sure the link to this script is working
+// console.log("selectFeature.js is connected");
+
+
+// -----------------------------------------------------
+// MAKE A FUNCTION THAT CREATES A STRING LITERAL, OR JUST jQUERY HTML CONSTRUCTOR,
+// TO CREATE THE <select> AND <option>s, USING THE DATA IN THE ARRAY BELOW FOR EACH OPTION
+// -----------------------------------------------------
+
+
+// NEED CODE THAT CREATES A SELECT BUTTON THAT LOOKS LIKE THIS:
+
+/* 
+<select name="feature" class="custom-select" id="feature_options">
+    <option value="" selected>select a feature:</option>
+    <option value="RSRT">resort</option>
+    <option value="SPA">spa</option>
+    <option value="BAY">bay</option>
+    <option value="FT">fort</option>
+    <option value="CTRS">space center</option>
+    <option value="CTRR">religious center</option>
+    <option value="PAL">palace</option>
+    <option value="PGDA">pagoda</option>
+    <option value="CNYN">canyon</option>
+    <option value="MESU">mesa</option>
+</select>
+*/
+
+// and .append the above <select> to: <div id="feature_input" class="input-group"></div>
+
+
+
+
+
+// -----------------------------------------------------
+// CREATE AN ARRAY WITH OBJECTS THAT HAVE { name: "feature name", value: "CODE" }
+// OF EACH OF THE 645 SEARCHABLE FEATURE CODES.
+// EACH FEATURE NAME/CODE OBJECT WILL BE AN <option> IN THE <select> ABOVE
+// THIS WILL NEED A FOR LOOP, OR MAYBE USE THE .forEach ARRAY METHOD INSTEAD OF A FOR LOOP?
+// -----------------------------------------------------
+
 var featureArray = [
 
     {
+        // H.AIRS	seaplane landing area	a place on a waterbody where floatplanes land and take off
         name: "seaplane landing area",
-        value: "featureCode=AIRS&",
+        value: "AIRS",
     },
     {
+        // H.ANCH	anchorage	an area where vessels may anchor
         name: "anchorage",
-        value: "featureCode=ANCH&",
+        value: "ANCH",
     },
     {
+        // H.BAY	bay	a coastal indentation between two capes or headlands, larger than a cove but smaller than a gulf
         name: "bay",
-        value: "featureCode=BAY&",
+        value: "BAY",
     },
 
 
 ];
 
-
-
-// NEED CODE THAT CREATES A SELECT BUTTON THAT LOOKS LIKE THIS,
-
-/* 
-<div class="input-group">
-<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-    <option value="" selected>select a feature:</option>
-    <option value="featureCode=AIRS&">seaplane landing area</option>
-    <option value="featureCode=ANCH&">anchorage</option>
-    <option value="featureCode=BAY&">bay</option>
-    <option value="featureCode=BAYS&">bays</option>
-    <option value="featureCode=BGHT&">bight(s)</option>
-    <option value="featureCode=BNK&">bank(s)</option>
-    <option value="featureCode=BNKR&">stream bank</option>
-    <option value="featureCode=BNKX&">section of bank</option>
-    <option value="featureCode=BOG&">bog(s)</option>
-    <option value="featureCode=CAPG&">icecap</option>
-</select>
-<div class="input-group-append">
-    <button class="addNewField btn btn-outline-secondary" type="button">+</button>
-</div>
-</div> 
-*/
-
-
-
-
-
-
 // TURN THIS DATA INTO A JAVASCRIPT ARRAY OF OBJECTS, WHICH WILL THEN BUILD ALL THE <option></option> ELEMENTS
-// FOR THE SELECT FIELD.
+// FOR THE <select> FIELD.
 
-// AND, WE NEED A WAY TO KEEP ADDING ADDITIONAL SELECT FIELDS: EITHER A NEW BLANK SELECT FIELD IS PRODUCED
-// EVERY TIME SOMEONE MAKES A SELECTION, OR, USE THE PLUS (+) BUTTON NEXT TO THE SELECT FIELD THAT ADDS A NEW SELECT FIELD
-
-// FOR THE value="" NAME, IGNORE THE FIRST LETTER AND ., JUST USE REST OF CODE,
-// AND THAT CODE NEEDS TO HAVE featureCode= BEFORE IT, AND & AFTER IT, SO FOR "H.AIRS", IT WOULD BE value="featureCode=AIRS&"
+// FOR THE value="" NAME, IGNORE THE FIRST LETTER AND ., JUST USE REST OF CODE AFTER THE DOT,
+// SO FOR "H.AIRS", IT WOULD BE value: "AIRS"
 // FOR THE OPTION'S TEXT, JUST USE THE FIRST WORD OR WORDS (THE NAME OF THE THING), IGNORE REST OF DESCRIPTION
 
 // H.AIRS	seaplane landing area	a place on a waterbody where floatplanes land and take off
@@ -711,4 +722,4 @@ var featureArray = [
 // V.TREE	tree(s)	a conspicuous tree used as a landmark
 // V.TUND	tundra	a marshy, treeless, high latitude plain, dominated by mosses, lichens, and low shrub vegetation under permafrost conditions
 // V.VIN	vineyard	a planting of grapevines
-// V.VINS	vineyards	plantings of grapevines 
+// V.VINS	vineyards	plantings of grapevines
