@@ -35,13 +35,14 @@
                     <option value="" selected>select a feature:</option>
                     <option value="RSRT">resort</option>
                     <option value="SPA">spa</option>
-                    <option value="BAY">bay</option>
                     <option value="FT">fort</option>
                     <option value="CTRS">space center</option>
                     <option value="CTRR">religious center</option>
                     <option value="PAL">palace</option>
                     <option value="PGDA">pagoda</option>
                     <option value="CNYN">canyon</option>
+                    <option value="PYR">pyramid</option>
+                    <option value="PYRS">pyramids</option>
                     <option value="MESU">mesa</option>
                 </select>
 
@@ -145,8 +146,6 @@
                             fLongitude = response.geonames[i].lng;
                             // console.log(fLongitude);
 
-                            // API KEY THAT FINDS UP TO 5 OF THE CLOSEST POSTAL CODES TO A LAT/LONG LOCATION
-                            // var geonamesNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&username=ghostfountain";
 
                             // API KEY THAT FINDS NEAREST POPULATED AREAS
                             var geonamesNearbyPlaceName = "http://api.geonames.org/findNearbyPlaceNameJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&username=ghostfountain";
@@ -164,7 +163,7 @@
                             // Result : returns the closest populated place (feature class=P) for the lat/lng query as xml document. The unit of the distance element is 'km'. 
 
 
-                            // HERE'S THE SECOND AJAX CALL TO GET...
+                            // HERE'S THE SECOND AJAX CALL TO GETS CLOSEST POPULATED AREAS TO RETURNED LOCATION
                             $.ajax({
                                     url: geonamesNearbyPlaceName,
                                     method: "GET"
@@ -174,29 +173,65 @@
                                     // console log the JSON Object data that comes back from the API call
                                     // console.log(response);
 
-                                    // get the closest populated area name near the feature
-                                    var nearbyCity = response.geonames[0].name;
-
+                                    // get the closest city name near the feature
+                                    var cityName = response.geonames[0].name;
                                     // console log the name of the nearby city
-                                    console.log(nearbyCity);
+                                    console.log(cityName);
+
+                                    // get the country name of the city
+                                    var cityCountry = response.geonames[0].countryName;
+                                    // console log the name of the nearby city
+                                    console.log(cityCountry);
+
+                                    // get the country code of the city
+                                    var cityCountryCode = response.geonames[0].countryCode;
+                                    // console log the country code of the nearby city
+                                    console.log(cityCountryCode);
+
+                                    // get the population of the city
+                                    var cityPopulation = response.geonames[0].population;
+                                    // console log the population of the nearby city
+                                    console.log(cityPopulation);
+
+                                    // get the latitude and longitude of the city
+                                    var cityLat = response.geonames[0].lat;
+                                    var cityLong = response.geonames[0].lng;
+                                    // console log the lat and long of the city
+                                    console.log(cityLat);
+                                    console.log(cityLong);
 
 
-                                    
 
-                                    // API KEY THAT FINDS A LIST OF POSTAL CODES FOR PLACE NAMES
-                                    var geonamesCityPostalCodes = "http://api.geonames.org/postalCodeSearchJSON?placename=" + nearbyCity + "&country=" + fCountryCode + "&maxRows=50&username=ghostfountain"
+                                    // Returns all neighbouring locations worldwide for a given pair of lat,long coordinates.
+                                    // Example API call (click, don't be shy):
+                                    // https://ezcmd.com/apps/api_ezip_locator/nearby_locations_by_coords/[API_KEY]/[USER_ID]
+                                    // GET Parameters:
+                                    // Mandatory:
+                                    // coords=41.701627,-87.698364 // Latitude and Longitude pair of coordinates separated by comma.
+                                    // Optional:
+                                    // within=150 // The distance radius to search for neighbouring places within.
+                                    // unit=Miles // Either Miles or Km (please mind the upper-case M and K).
+                                    // group=place_name // Avoid duplicate results by grouping your results by any of the returned fields. Default grouping is by place_name. Group by id to get all zip codes.
+                                    // start=0 // The results are paginated. The start offset. Limit is always 100.
 
-                                    // // HERE'S THE SECOND AJAX CALL TO GET...
-                                    // $.ajax({
-                                    //         url: geonamesNearbyPlaceName,
-                                    //         method: "GET"
-                                    //     })
-                                    //     .then(function (response) {
 
-                                    //         // console log the JSON Object data that comes back from the API call
-                                    //         console.log(response);
+                                    // API KEY THAT FINDS A LIST OF POSTAL CODES BASED ON LAT and LONG COORDINATES
+                                    // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
+                                    var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=5&unit=Km&group=" + cityName;
 
-                                    //     });
+
+                                    // HERE'S THE THIRD AJAX CALL TO EZCMD TO GET POSTAL CODES
+                                    // FROM THE LAT AND LONG OF THE NEARBY CITY
+                                    $.ajax({
+                                            url: ezcmdPostalCodes,
+                                            method: "GET"
+                                        })
+                                        .then(function (response) {
+
+                                            // console log the JSON Object data that comes back from the API call
+                                            console.log(response);
+
+                                        });
 
                                 });
                         }
