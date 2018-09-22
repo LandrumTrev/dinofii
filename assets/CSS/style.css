@@ -1,18 +1,16 @@
-#submitButton {
-    border: solid .5px;
-    box-shadow: 4px 2px;
-}
 #submitButton span {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 #submitButton:hover {
     padding-right: 25px;
     background-image: url("../../images/map-bg.png");
     background-size: contain;
+    
 }
-#srch-term {
-    box-shadow: 4px 2px;
+#buttonLabel {
+    z-index: -2;
+   
 }
