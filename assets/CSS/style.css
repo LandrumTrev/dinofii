@@ -1,3 +1,6 @@
+body {
+    font-family: "Merriweather";
+}
 #submitButton span {
     cursor: pointer;
     display: inline-block;
@@ -8,9 +11,15 @@
     padding-right: 25px;
     background-image: url("../../images/map-bg.png");
     background-size: contain;
-    
 }
 #buttonLabel {
-    z-index: -2;
-   
+    z-index: -1;
+}
+#title {
+    font-family: 'Leckerli One', cursive;
+}
+#name {
+    position: relative;
+    left: 31%;
+    bottom: 15%;
 }
