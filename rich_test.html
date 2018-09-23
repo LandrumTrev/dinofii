@@ -216,7 +216,7 @@
                                     // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
                                     // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong;
 
-                                    var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=10&unit=Km&group=" + cityName;
+                                    // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=10&unit=Km&group=" + cityName;
 
 
 
@@ -224,7 +224,7 @@
 
 
                                     // API KEY for POSTAL CODE SEARCH (requires placename or postalcode)
-                                    // var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country="+ cityCountryCode +"&localCountry=true&username=ghostfountain"
+                                    var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country="+ cityCountryCode +"&localCountry=true&username=ghostfountain"
                                     
                                     // This service comes in two flavors. You can either pass the lat/long or a postalcode/placename.
                                     // Webservice Type : REST 
@@ -254,13 +254,29 @@
                                     // HERE'S THE THIRD AJAX CALL TO EZCMD TO GET POSTAL CODES
                                     // FROM THE LAT AND LONG OF THE NEARBY CITY
                                     $.ajax({
-                                            url: ezcmdPostalCodes,
+                                            url: geonamesFindNearbyPostalCodes,
                                             method: "GET"
                                         })
                                         .then(function (response) {
 
                                             // console log the JSON Object data that comes back from the API call
                                             console.log(response);
+                                            // console.log for ezcmdPostalCodes postal_codes
+                                            // console.log(response.search_results[0].postal_code);
+                                            // console.log(response.search_results[1].postal_code);
+                                            // console.log(response.search_results[2].postal_code);
+                                            // console.log(response.search_results[3].postal_code);
+                                            // console.log(response.search_results[4].postal_code);
+                                            // console.log(response.search_results[5].postal_code);
+
+                                            // console.log for geonamesFindNearbyPostalCodes postal_codes
+                                            console.log(response.postalCodes[0].postalCode);
+                                            console.log(response.postalCodes[1].postalCode);
+                                            console.log(response.postalCodes[2].postalCode);
+                                            console.log(response.postalCodes[3].postalCode);
+                                            console.log(response.postalCodes[4].postalCode);
+                                            console.log(response.postalCodes[5].postalCode);
+                                            console.log(response.postalCodes[6].postalCode);
 
                                         });
 
