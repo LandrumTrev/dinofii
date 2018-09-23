@@ -34,6 +34,8 @@ body {
 }
 #descript {
     padding-left: 6%;
+    padding-top: 2%;
+    font-family: 'Leckerli One';
 }
 #phonicTitle {
     line-height: 0.5em;
