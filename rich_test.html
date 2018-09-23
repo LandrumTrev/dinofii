@@ -53,6 +53,10 @@
             </div>
 
         </form>
+        <br>
+        <div class="input-group-append">
+            <input id="wigle_btn" type="submit" class="btn btn-primary" name="submit" value="WIGLE!">
+        </div>
 
     </div>
 
@@ -116,7 +120,7 @@
 
                 // THIS IS THE API URL STRING TO CALL FOR A LIST OF LOCATIONS THAT HAVE THE featureCode
                 // var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&username=ghostfountain";
-                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
+                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
 
                 // HERE'S THE FIRST AJAX CALL TO GET LOCATIONS BASED ON FEATURE CODE (SEARCH TERM)
                 $.ajax({
@@ -224,12 +228,12 @@
 
 
                                     // API KEY for POSTAL CODE SEARCH (requires placename or postalcode)
-                                    var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country="+ cityCountryCode +"&localCountry=true&username=ghostfountain"
-                                    
+                                    var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country=" + cityCountryCode + "&localCountry=true&username=ghostfountain"
+
                                     // This service comes in two flavors. You can either pass the lat/long or a postalcode/placename.
                                     // Webservice Type : REST 
                                     // Url : api.geonames.org/findNearbyPostalCodes?
-                                    
+
                                     // Parameters : 
                                     // lat,lng, radius (in km), 
                                     // maxRows (default = 5),
@@ -270,13 +274,24 @@
                                             // console.log(response.search_results[5].postal_code);
 
                                             // console.log for geonamesFindNearbyPostalCodes postal_codes
-                                            console.log(response.postalCodes[0].postalCode);
-                                            console.log(response.postalCodes[1].postalCode);
-                                            console.log(response.postalCodes[2].postalCode);
-                                            console.log(response.postalCodes[3].postalCode);
-                                            console.log(response.postalCodes[4].postalCode);
-                                            console.log(response.postalCodes[5].postalCode);
-                                            console.log(response.postalCodes[6].postalCode);
+                                            // console.log(response.postalCodes[0].postalCode);
+                                            // console.log(response.postalCodes[1].postalCode);
+                                            // console.log(response.postalCodes[2].postalCode);
+                                            // console.log(response.postalCodes[3].postalCode);
+                                            // console.log(response.postalCodes[4].postalCode);
+                                            // console.log(response.postalCodes[5].postalCode);
+                                            // console.log(response.postalCodes[6].postalCode);
+
+
+
+
+                                            // loop through all location Objects in the Array (response)
+                                            for (let j = 0; j < response.postalCodes.length; j++) {
+
+                                                console.log(response.postalCodes[j].postalCode);
+
+                                            }
+
 
                                         });
 
@@ -284,8 +299,6 @@
                         }
 
 
-                        // THE API TO SEND THE countryCode TO, AND GET BACK THE NUMBER OF HOTSPOTS IN EACH POSTAL CODE
-                        // https://api.wigle.net/api/v2/stats/regions?country=US
 
                     });
 
@@ -295,13 +308,54 @@
 
 
 
+            // WHEN THE "WIGLE!" BUTTON IS CLICKED...
+            $("#wigle_btn").on("click", function () {
+
+                // stop all the default submit form behaviors
+                event.preventDefault();
+
+                // API KEY for WIGLE /api/v2/stats/regions
+                // Get statistics for a specified country, organized by region
+                // SEND COUNTRY CODE, GET BACK A LIST OF POSTAL CODES WITH NUMBER OF WIFI HOTSPOTS
+                var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
+
+                // HERE'S THE FIRST AJAX CALL TO GET LOCATIONS BASED ON FEATURE CODE (SEARCH TERM)
+                $.ajax({
+                        headers: {
+                            'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
+                        },
+                        url: wigleHotspots,
+                        method: "GET"
+                    })
+                    .then(function (response) {
+
+                        console.log(response);
+
+                    });
 
 
-
+            });
 
             // END jQUERY FUNCTION
         });
         // ----------------------------------------------------------------
+
+
+
+        // THE API TO SEND THE countryCode TO, AND GET BACK THE NUMBER OF HOTSPOTS IN EACH POSTAL CODE
+        // https://api.wigle.net/api/v2/stats/regions?country=US
+        // API Name: AID544c0365fdcc8c2463ec21d3590bbd23
+        // API Token: 8891f56fb22400d107dd8ee49d2798ff
+        // API Name:Token: 
+        // AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff
+        // API Name:Token in Base64 ("Encoded for use"): 
+        // QUlENTQ0YzAzNjVmZGNjOGMyNDYzZWMyMWQzNTkwYmJkMjM6ODg5MWY1NmZiMjI0MDBkMTA3ZGQ4ZWU0OWQyNzk4ZmY=
+        // 
+        //
+        //
+        //
+        //
+        //
     </script>
 
 </body>
