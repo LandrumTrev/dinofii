@@ -115,7 +115,8 @@
                 event.preventDefault();
 
                 // THIS IS THE API URL STRING TO CALL FOR A LIST OF LOCATIONS THAT HAVE THE featureCode
-                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&username=ghostfountain";
+                // var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&username=ghostfountain";
+                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
 
                 // HERE'S THE FIRST AJAX CALL TO GET LOCATIONS BASED ON FEATURE CODE (SEARCH TERM)
                 $.ajax({
@@ -215,40 +216,15 @@
                                     // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
                                     // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong;
 
-                                    // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=60&unit=Miles&group=" + cityName;
+                                    var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=10&unit=Km&group=" + cityName;
 
-
-                                    // =========================================================
-
-
-                                    // API KEY for POSTAL CODE SEARCH (requires placename or postalcode)
-                                    // var geonamesSearchPostalCodes = "http://api.geonames.org/postalCodeSearchJSON?placename=" + cityName + "&country=" + cityCountryCode + "&maxrows=50&style=FULL&username=ghostfountain";
-
-
-                                    // Postal Code Search
-                                    // Url	»	api.geonames.org/postalCodeSearch?
-                                    // Result	»	returns a list of postal codes and places for the placename/postalcode query as xml document 
-                                    // For the US the first returned zip code is determined using zip code area shapes, the following zip codes are based on the centroid. For all other supported countries all returned postal codes are based on centroids.
-                                    // Parameter	Value	Description
-                                    // postalcode	string (postalcode or placename required)	postal code
-                                    // postalcode_startsWith	string	the first characters or letters of a postal code
-                                    // placename	string (postalcode or placename required)	all fields : placename,postal code, country, admin name (Important:urlencoded utf8)
-                                    // placename_startsWith	string	the first characters of a place name
-                                    // country	string : country code, ISO-3166 (optional)	Default is all countries. The country parameter may occur more than once, example: country=FR&country=GP
-                                    // countryBias	string	records from the countryBias are listed first
-                                    // maxRows	integer (optional)	the maximal number of rows in the document returned by the service. Default is 10
-                                    // style	string SHORT,MEDIUM,LONG,FULL (optional)	verbosity of returned xml document, default = MEDIUM
-                                    // operator	string AND,OR (optional)	the operator 'AND' searches for all terms in the placename parameter, the operator 'OR' searches for any term, default = AND
-                                    // charset	string (optional)	default is 'UTF8', defines the encoding used for the document returned by the web service.
-                                    // isReduced	true or false (optional)	default is 'false', when set to 'true' only the UK outer codes respectivel the NL 4-digits are returned. Attention: the default value on the commercial servers is currently set to 'true'. It will be changed later to 'false'.
-                                    // east,west,north,south	float (optional)	bounding box, only features within the box are returned
 
 
                                     // =========================================================
 
 
                                     // API KEY for POSTAL CODE SEARCH (requires placename or postalcode)
-                                    var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=5&maxRows=50&style=SHORT&country="+ cityCountryCode +"&localCountry=true&username=ghostfountain"
+                                    // var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country="+ cityCountryCode +"&localCountry=true&username=ghostfountain"
                                     
                                     // This service comes in two flavors. You can either pass the lat/long or a postalcode/placename.
                                     // Webservice Type : REST 
@@ -278,7 +254,7 @@
                                     // HERE'S THE THIRD AJAX CALL TO EZCMD TO GET POSTAL CODES
                                     // FROM THE LAT AND LONG OF THE NEARBY CITY
                                     $.ajax({
-                                            url: geonamesFindNearbyPostalCodes,
+                                            url: ezcmdPostalCodes,
                                             method: "GET"
                                         })
                                         .then(function (response) {
