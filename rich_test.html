@@ -220,92 +220,100 @@
                             //         // console.log(cityLong);
 
 
-                                    // =========================================================
-                                    // =========================================================
-                                    // =========================================================
+                            // =========================================================
+                            // =========================================================
+                            // =========================================================
 
 
-                                    // API KEY for POSTAL CODE SEARCH with city coordinates (requires placename or postalcode)
-                                    // var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country=" + cityCountryCode + "&localCountry=true&username=ghostfountain"
+                            // API KEY for POSTAL CODE SEARCH with city coordinates (requires placename or postalcode)
+                            // var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=50&style=SHORT&country=" + cityCountryCode + "&localCountry=true&username=ghostfountain"
 
-                                    // API KEY for POSTAL CODE SEARCH with feature coordinates (requires placename or postalcode)
-                                    var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&radius=30&maxRows=5&style=SHORT&country=" + fCountryCode + "&localCountry=false&username=ghostfountain"
+                            // API KEY for POSTAL CODE SEARCH with feature coordinates (requires placename or postalcode)
+                            var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&radius=30&maxRows=5&style=SHORT&country=" + fCountryCode + "&localCountry=false&username=ghostfountain"
 
-                                    // This service comes in two flavors. Either pass lat/long or a postalcode/placename.
-                                    // Webservice Type : REST 
-                                    // Url : api.geonames.org/findNearbyPostalCodes?
+                            // This service comes in two flavors. Either pass lat/long or a postalcode/placename.
+                            // Webservice Type : REST 
+                            // Url : api.geonames.org/findNearbyPostalCodes?
 
-                                    // Parameters : 
-                                    // lat,lng, radius (in km), 
-                                    // maxRows (default = 5),
-                                    // style (verbosity : SHORT,MEDIUM,LONG,FULL), 
-                                    // country (default = all countries), 
-                                    // localCountry (in border areas this parameter will restrict the search on the local country, value=true)
+                            // Parameters : 
+                            // lat,lng, radius (in km), 
+                            // maxRows (default = 5),
+                            // style (verbosity : SHORT,MEDIUM,LONG,FULL), 
+                            // country (default = all countries), 
+                            // localCountry (in border areas this parameter will restrict the search on the local country, value=true)
 
-                                    // or
-                                    // postalcode,country, radius (in Km), maxRows (default = 5)
+                            // or
+                            // postalcode,country, radius (in Km), maxRows (default = 5)
 
-                                    // Result : returns a list of postalcodes and places for the lat/lng query as xml document. The result is sorted by distance. For Canada the FSA is returned (first 3 characters of full postal code) 
+                            // Result : returns a list of postalcodes and places for the lat/lng query as xml document. The result is sorted by distance. For Canada the FSA is returned (first 3 characters of full postal code) 
 
-                                    // Example: 
-                                    // http://api.geonames.org/findNearbyPostalCodes?lat=47&lng=9&username=demo 
-                                    // or 
-                                    // api.geonames.org/findNearbyPostalCodes?postalcode=8775&country=CH&radius=10&username=demo
-                                    // This service is also available in JSON format : api.geonames.org/findNearbyPostalCodesJSON?postalcode=8775&country=CH&radius=10&username=demo 
-
-
-
-
-                                    // HERE'S THE THIRD (NOW SECOND) AJAX CALL TO GET NEARBY POSTAL CODES
-                                    // FROM THE LAT AND LONG OF THE NEARBY CITY OR FEATURE ITSELF
-                                    $.ajax({
-                                            url: geonamesFindNearbyPostalCodes,
-                                            method: "GET"
-                                        })
-                                        .then(function (response) {
-
-                                            // console log the JSON Object data that comes back from the API call
-                                            console.log(response);
-
-                                            // console.log for geonamesFindNearbyPostalCodes postal_codes
-                                            // console.log(response.postalCodes[0].postalCode);
-                                            console.log(response.postalCodes[0].placeName);
-                                            // console.log(response.postalCodes[0].countryCode);
-                                            // console.log(cityCountryCode);
-                                            console.log(response.postalCodes[0].postalCode + " " + fCountryCode);
-
-                                            // loop through all location Objects in the Array (response)
-                                            for (let j = 0; j < response.postalCodes.length; j++) {
-
-                                                // console.log(response.postalCodes[j].postalCode);
-                                                // console.log(cityCountryCode);
-
-                                                // // API KEY for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                                // // var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
-                                                // var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
-
-                                                // // AJAX CALL for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                                // // REQUIRES username:token AS A Base64 Basic Authorization HTTP Header
-                                                // $.ajax({
-                                                //         headers: {
-                                                //             'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
-                                                //         },
-                                                //         url: wigleHotspots,
-                                                //         method: "GET"
-                                                //     })
-                                                //     .then(function (response) {
-
-                                                //         // console.log(response);
-                                                //         // console.log(response.postalCode);
-                                                //         // console.log(response.postalCode[101]);
-                                                //         console.log(response.postalCode[101].count);
-                                                //         console.log(response.postalCode[101].postalCode);
-
-                                                //     });
+                            // Example: 
+                            // http://api.geonames.org/findNearbyPostalCodes?lat=47&lng=9&username=demo 
+                            // or 
+                            // api.geonames.org/findNearbyPostalCodes?postalcode=8775&country=CH&radius=10&username=demo
+                            // This service is also available in JSON format : api.geonames.org/findNearbyPostalCodesJSON?postalcode=8775&country=CH&radius=10&username=demo 
 
 
 
 
+                            // HERE'S THE THIRD (NOW SECOND) AJAX CALL TO GET NEARBY POSTAL CODES
+                            // FROM THE LAT AND LONG OF THE NEARBY CITY OR FEATURE ITSELF
+                            $.ajax({
+                                    url: geonamesFindNearbyPostalCodes,
+                                    method: "GET"
+                                })
+                                .then(function (response) {
+
+                                    // console log the JSON Object data that comes back from the API call
+                                    // console.log(response);
+
+                                    // loop through all location Objects in the Array (response)
+                                    for (let j = 0; j < response.postalCodes.length; j++) {
+
+                                        let nearPlaceName = response.postalCodes[j].placeName;
+                                        let nearPlacePostalCode = response.postalCodes[j].postalCode;
+                                        let nearPlaceCountryCode = response.postalCodes[j].countryCode;
+                                        let nearPlaceDistance = response.postalCodes[j].distance;
+                                        let nearPlaceWifi;
+                                        // console.log("near: " + nearPlaceName +" "+ nearPlaceCountryCode +" "+ nearPlacePostalCode +" "+ nearPlaceDistance);
+                                        // console.log("near: " + nearPlaceName +" "+ nearPlaceCountryCode +" "+ nearPlacePostalCode);
+
+
+                                        // API KEY for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
+                                        // var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
+                                        var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
+
+                                        // AJAX CALL for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
+                                        // REQUIRES username:token AS A Base64 Basic Authorization HTTP Header
+                                        $.ajax({
+                                                headers: {
+                                                    'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
+                                                },
+                                                url: wigleHotspots,
+                                                method: "GET"
+                                            })
+                                            .then(function (response) {
+
+                                                // console.log(response);
+
+                                                for (let k = 0; k < response.postalCode.length; k++) {
+
+                                                    let listPostalCode = response.postalCode[k].postalCode;
+                                                    let listHotSpots = response.postalCode[k].count;
+
+                                                    if (listPostalCode === nearPlacePostalCode) {
+
+                                                        nearPlaceWifi = listHotSpots;
+
+                                                        console.log(nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " has " + nearPlaceWifi + " hotspots.");
+
+                                                    } else {
+
+                                                        // console.log("DESTINATION: " + fName + ", " + fCountryName + " has " + " ?" + " hotspots.");
+
+                                                    }
+                                                    // console.log(nearPlaceWifi);
+                                                }
 
 
 
@@ -315,12 +323,33 @@
 
 
 
-                                            }
 
 
-                                        });
 
-                                // });
+
+
+
+
+                                            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    }
+
+
+                                });
+
+                            // });
                         }
 
 
