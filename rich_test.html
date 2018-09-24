@@ -121,7 +121,7 @@
                     })
                     .then(function (response) {
 
-                        // console.log(response);
+                        console.log(response);
 
                         // CREATE VARS FOR EACH FEATURE
                         var fName;
@@ -135,10 +135,18 @@
 
                             // SET VAR VALUES FOR EACH FEATURE
                             fName = response.geonames[i].name;
-                            fCountryName = response.geonames[i].countryName;
                             fCountryCode = response.geonames[i].countryCode;
                             fLatitude = response.geonames[i].lat;
                             fLongitude = response.geonames[i].lng;
+
+                            if (response.geonames[i].countryName) {
+
+                                fCountryName = response.geonames[i].countryName;
+                            } else {
+
+                                fCountryName = response.geonames[i].fclName;
+
+                            }
 
                             // DISPLAY THE FEATURE NAME AND COUNTRY
                             console.log("DESTINATION: " + fName + ", " + fCountryName);
@@ -154,90 +162,105 @@
                                 })
                                 .then(function (response) {
 
-                                    // console.log(response);
+                                    console.log(response);
 
-                                    // SET VARIABLE VALUES FOR THE FIRST (CLOSEST) CITY NEAR THE FEATURE
-                                    var cityName = response.geonames[0].name;
-                                    var cityCountry = response.geonames[0].countryName;
-                                    var cityCountryCode = response.geonames[0].countryCode;
-                                    var cityLat = response.geonames[0].lat;
-                                    var cityLong = response.geonames[0].lng;
-                                    var cityDistance = response.geonames[0].distance;
-                                    var cityPopulation = response.geonames[0].population;
+                                        // SET VARIABLE VALUES FOR THE FIRST (CLOSEST) CITY NEAR THE FEATURE
+                                        var cityName;
+                                        var cityCountry;
+                                        var cityCountryCode;
+                                        var cityLat;
+                                        var cityLong;
+                                        var cityDistance;
+                                        var cityPopulation;
+
+                                    if (response.geonames.length > 0) {
+
+                                        // SET VARIABLE VALUES FOR THE FIRST (CLOSEST) CITY NEAR THE FEATURE
+                                        cityCountry = response.geonames[0].countryName;
+                                        cityCountryCode = response.geonames[0].countryCode;
+                                        cityName = response.geonames[0].name;
+                                        cityLat = response.geonames[0].lat;
+                                        cityLong = response.geonames[0].lng;
+                                        cityDistance = response.geonames[0].distance;
+                                        cityPopulation = response.geonames[0].population;
+
+                                    } else {
+
+                                        console.log("CLOSEST CITY: no info");
+
+                                    }
 
                                     console.log("CLOSEST CITY: " + cityName + ", " + cityCountryCode + ", (" + cityDistance + " km)");
 
 
-                                    // geoNames POSTAL CODE SEARCH: TRY NOT TO USE THIS, TO LIMIT geoNames CREDIT USAGE (2 credits/request)
-                                    // API KEY for POSTAL CODE SEARCH with city coordinates (requires placename or postalcode)
-                                    // var geonamesFindNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + cityLat + "&lng=" + cityLong + "&radius=10&maxRows=1&style=SHORT&country=" + cityCountryCode + "&localCountry=true&username=ghostfountain"
-
-                                    // ALTERNATE POSTAL CODE SEARCH, TO CUT DOWN ON geoNames SEARCH CREDITS (THIS SERVICE: 10,000 hits/mo)
                                     // API KEY THAT FINDS A LIST OF POSTAL CODES BASED ON LAT and LONG COORDINATES
                                     // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
-                                    var geonamesFindNearbyPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong;
+                                    var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=100&unit=Km";
 
 
 
                                     // THIRD AJAX CALL TO GET NEARBY POSTAL CODES
                                     // FROM THE LAT AND LONG OF THE NEARBY CITY OR FEATURE ITSELF
                                     $.ajax({
-                                            url: geonamesFindNearbyPostalCodes,
+                                            url: ezcmdPostalCodes,
                                             method: "GET"
                                         })
                                         .then(function (response) {
 
-                                            // console log the JSON Object data that comes back from the API call
+                                            // console the object containing all nearby postal codes (list of 100 place objects)
                                             // console.log(response);
 
-                                            // THIS FOR LOOP NEEDS TO BE UPDATED FOR ezcmd API:
+                                            if (response.search_results > 0) {
 
-                                            // loop through all location Objects in the Array (response)
-                                            for (let j = 0; j < response.postalCodes.length; j++) {
+                                                let nearPlaceName = response.search_results[0].place_name;
+                                                let nearPlacePostalCode = response.search_results[0].postal_code;
+                                                let nearPlaceCountryCode = response.search_results[0].country_code;
+                                                let nearPlaceCountryName = response.search_results[0].country_name;
+                                                let nearPlaceDistance = Math.floor(response.search_results[0].distance);
 
-                                                let nearPlaceName = response.postalCodes[j].placeName.trim();
-                                                let nearPlacePostalCode = response.postalCodes[j].postalCode;
-                                                let nearPlaceCountryCode = response.postalCodes[j].countryCode;
-                                                let nearPlaceDistance = response.postalCodes[j].distance;
-                                                let nearPlaceWifi;
-                                                // console.log("near: " + nearPlaceName +" "+ nearPlaceCountryCode +" "+ nearPlacePostalCode +" "+ nearPlaceDistance);
-                                                // console.log("near: " + nearPlaceName +" "+ nearPlaceCountryCode +" "+ nearPlacePostalCode);
+                                            } else {
 
+                                                console.log("WIFI: no info");
 
-                                                // API KEY for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                                // var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
-                                                var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
-
-                                                // AJAX CALL for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                                // REQUIRES username:token AS A Base64 Basic Authorization HTTP Header
-                                                $.ajax({
-                                                        headers: {
-                                                            'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
-                                                        },
-                                                        url: wigleHotspots,
-                                                        method: "GET"
-                                                    })
-                                                    .then(function (response) {
-
-                                                        // console.log(response);
-
-                                                        for (let k = 0; k < response.postalCode.length; k++) {
-
-                                                            let listPostalCode = response.postalCode[k].postalCode;
-                                                            let listHotSpots = response.postalCode[k].count;
-
-                                                            if (listPostalCode === nearPlacePostalCode) {
-
-                                                                nearPlaceWifi = listHotSpots;
-
-                                                                console.log("CLOSEST CITY: " + nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " (" + nearPlaceDistance + " km) has " + nearPlaceWifi + " hotspots.");
-
-                                                            }
-                                                        }
-
-                                                    });
+                                                return;
 
                                             }
+
+                                            // API KEY for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
+                                            var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
+
+                                            // AJAX CALL for WIGLE: SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
+                                            // REQUIRES username:token AS A Base64 Basic Authorization HTTP Header
+                                            $.ajax({
+                                                    headers: {
+                                                        'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
+                                                    },
+                                                    url: wigleHotspots,
+                                                    method: "GET"
+                                                })
+                                                .then(function (response) {
+
+                                                    // console.log(response);
+
+                                                    let nearPlaceWifi = 0;
+
+                                                    for (let k = 0; k < response.postalCode.length; k++) {
+
+                                                        let listPostalCode = response.postalCode[k].postalCode;
+                                                        let listHotSpots = response.postalCode[k].count;
+
+                                                        if (listPostalCode === nearPlacePostalCode) {
+
+                                                            nearPlaceWifi = listHotSpots;
+
+                                                            console.log("CLOSEST CITY: " + nearPlaceName + ", " + nearPlaceCountryName + " (" + nearPlaceDistance + " km)");
+
+                                                            console.log("WIFI: postal code " + nearPlacePostalCode + " " + nearPlaceCountryCode + " has " + nearPlaceWifi + " hotspots.");
+
+                                                        }
+                                                    }
+
+                                                });
 
                                         });
 
