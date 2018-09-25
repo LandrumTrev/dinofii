@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
+        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -60,16 +60,14 @@ $(document).ready(function () {
 
                     } else {
 
-                        // featureCountryName = "";
+                        featureCountryName = "";
                         console.log("DESTINATION: " + featureName);
 
                     }
 
+                    getPostalCodes();
 
                 }
-
-                getPostalCodes();
-
             });
     }
 
@@ -110,15 +108,27 @@ $(document).ready(function () {
 
                     getHotspots();
 
-                }  else if (featureLocation) {
-                    console.log("CLOSEST CITY: (" + featureLocation + ")");
-                    // console.log("WIFI: no info");
-                    return;
+                } else if (featureLocation) {
+
+                    nearPlaceName = featureLocation;
+                    nearPlacePostalCode = "";
+                    nearPlaceCountryCode = "";
+                    nearPlaceCountryName = "";
+                    nearPlaceDistance = "?";
+
+                    getHotspots();
+
+                    console.log("CLOSEST CITY: (" + nearPlaceName + ")");
+
+                    // return;
                 } else {
+
+                    getHotspots();
+
                     console.log("CLOSEST CITY: no info");
-                    // console.log("WIFI: no info");
-                    return;
+                    // return;
                 }
+
             });
     }
 
@@ -130,15 +140,15 @@ $(document).ready(function () {
     // =====================================================================================
 
     // getHotspots variables
-    var nearPlaceWifi = 0;
+    var nearPlaceWifi = "?";
     var listPostalCode;
     var listHotSpots
 
     // mini function to format thousands of WiFi numbers to k format
     function kFormatter(num) {
-        return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+        return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
     }
-    
+
     function getHotspots() {
 
         var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
@@ -154,21 +164,25 @@ $(document).ready(function () {
             })
             .then(function (response) {
 
+
                 for (var k = 0; k < response.postalCode.length; k++) {
 
                     listPostalCode = response.postalCode[k].postalCode;
                     listHotSpots = kFormatter(response.postalCode[k].count);
-
-                    // console.log(listPostalCode);
-                    // console.log(listHotSpots);
 
                     if (listPostalCode === nearPlacePostalCode) {
 
                         nearPlaceWifi = listHotSpots;
 
                         console.log("WIFI: " + nearPlaceName + " " + nearPlacePostalCode + " " + nearPlaceCountryCode + " has " + nearPlaceWifi + " hotspots");
+
                     }
                 }
+
+                buildCard();
+
+                nearPlaceWifi = "?";
+
             });
     }
 
@@ -189,6 +203,16 @@ $(document).ready(function () {
 
     });
 
+
+
+    // ============================================================================================================
+    // FUNCTION TO DYNAMICALLY BUILD A RESPONSE CARD FROM ALL RETURNED INFO
+    // ============================================================================================================
+
+    function buildCard() {
+
+        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + featureName + " : " + featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'>" + featureLatitude + ", " + featureLongitude + "</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " (" + nearPlaceDistance + " km)</span><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:2px;'></i><span class='float-right font-weight-bold'>" + nearPlaceWifi + "</span></div></div>");
+    }
 
     // END jQUERY FUNCTION
 });
