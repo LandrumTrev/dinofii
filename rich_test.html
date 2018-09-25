@@ -65,229 +65,159 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/JS/script.js"></script>
+    <!-- <script type="text/javascript" src="assets/JS/script.js"></script> -->
 
     <script src="assets/JS/selectFeature.js"></script>
 
 
     <script>
         // START jQUERY FUNCTION
-        // ----------------------------------------------------------------
+        // ==============================
         $(document).ready(function () {
 
 
-            // -----------------------------------------------------
-            // CODE BELOW SETS THE VALUE OF featureCode WHEN USER CHANGES <select> <option>
-            // -----------------------------------------------------
 
-            // FEATURE CODE (like: SPA) THAT WILL BE INSERTED INTO THE geonamesLocationURL
+            // ============================================================================================================
+            // GET THE FEATURE CODE FROM THE VALUE OF THE OPTION SELECTED IN THE DROPDOWN LIST
+            // ============================================================================================================
+
+            // set variable to stand for the feature code of feature name selected from dropdown
             var featureCode;
 
-            // FUNCTION THAT GETS THE featureCode VALUE FROM THE <select> <option>
             function getFeatureCode() {
 
-                // create a one-element Array from the value of <form> input 
-                // .serializeArray() gives cleaner format than .serialize()
                 var fCode = $("form").serializeArray();
 
-                // set the value of featureCode to be the value of value { value: "SPA" } of first (only) object in Array
                 featureCode = fCode[0].value;
-
             }
 
-            // whenever user's search term changes, run getFeatureCode() to update the value of featureCode
             $("select").on("change", getFeatureCode);
 
 
 
-            // -----------------------------------------------------
-            // CODE BELOW INSERTS THE featureCode INTO THE API STRING,
-            // AND MAKES THE AJAX CALL TO THE API, GETTING AN ARRAY OF MATCHING LOCATION OBJECTS
-            // -----------------------------------------------------
+            // ============================================================================================================
+            // GET LOCATIONS MATCHING FEATURE CODES FROM GEONAMES search SERVICE (1 credit, limit 2,000/hr, 30,000/mo)
+            // ============================================================================================================
 
-            // WHEN THE "SEARCH" BUTTON IS CLICKED...
-            $("#search_btn").on("click", function () {
+            // getFeatureName variables
+            var featureName;
+            var featureCountryName;
+            var featureCountryCode;
+            var featureLatitude;
+            var featureLongitude;
+            var featureLocation;
 
-                // stop all the default submit form behaviors
-                event.preventDefault();
 
-                // API URL TO GET LIST OF LOCATIONS THAT HAVE featureCode (search = 1 credit per request)
-                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
+            function getFeatureName() {
 
-                // FIRST AJAX CALL TO GET LOCATIONS BASED ON FEATURE CODE (SEARCH TERM)
+                var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
+
                 $.ajax({
-                        url: geonamesLocationURL,
+                        url: geonamesSearchFeatures,
                         method: "GET"
                     })
                     .then(function (response) {
 
-                        console.log(response);
+                        for (var i = 0; i < response.geonames.length; i++) {
 
-                        // CREATE VARS FOR EACH FEATURE
-                        var fName;
-                        var fCountryName;
-                        var fCountryCode;
-                        var fLatitude;
-                        var fLongitude;
-
-                        // LOOP THAT SETS VAR VALUES FOR EACH FEATURE RETURNED BY THE featureCode SEARCH
-                        for (let i = 0; i < response.geonames.length; i++) {
-
-                            // SET VAR VALUES FOR EACH FEATURE
-                            fName = response.geonames[i].name;
-                            fCountryCode = response.geonames[i].countryCode;
-                            fLatitude = response.geonames[i].lat;
-                            fLongitude = response.geonames[i].lng;
+                            featureName = response.geonames[i].name;
+                            featureCountryCode = response.geonames[i].countryCode;
+                            featureLatitude = response.geonames[i].lat;
+                            featureLongitude = response.geonames[i].lng;
+                            featureLocation = response.geonames[i].fclName;
 
                             if (response.geonames[i].countryName) {
 
-                                fCountryName = response.geonames[i].countryName;
+                                featureCountryName = response.geonames[i].countryName;
+                                console.log("DESTINATION: " + featureName + ", " + featureCountryName);
+
                             } else {
 
-                                fCountryName = response.geonames[i].fclName;
+                                // featureCountryName = "";
+                                console.log("DESTINATION: " + featureName);
 
                             }
 
-                            // DISPLAY THE FEATURE NAME AND COUNTRY
-                            console.log("DESTINATION: " + fName + ", " + fCountryName);
 
-
-                            // API KEY THAT FINDS NEAREST POPULATED AREAS (findNearbyPlaceName = 3 credits per request)
-                            var geonamesNearbyPlaceName = "http://api.geonames.org/findNearbyPlaceNameJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&radius=30&style=MEDIUM&maxRows=1&username=ghostfountain";
-
-                            // SECOND AJAX CALL TO GET CLOSEST CITY TO THE FEATURE
-                            $.ajax({
-                                    url: geonamesNearbyPlaceName,
-                                    method: "GET"
-                                })
-                                .then(function (response) {
-
-                                    console.log(response);
-
-                                        // SET VARIABLE VALUES FOR THE FIRST (CLOSEST) CITY NEAR THE FEATURE
-                                        var cityName;
-                                        var cityCountry;
-                                        var cityCountryCode;
-                                        var cityLat;
-                                        var cityLong;
-                                        var cityDistance;
-                                        var cityPopulation;
-
-                                    if (response.geonames.length > 0) {
-
-                                        // SET VARIABLE VALUES FOR THE FIRST (CLOSEST) CITY NEAR THE FEATURE
-                                        cityCountry = response.geonames[0].countryName;
-                                        cityCountryCode = response.geonames[0].countryCode;
-                                        cityName = response.geonames[0].name;
-                                        cityLat = response.geonames[0].lat;
-                                        cityLong = response.geonames[0].lng;
-                                        cityDistance = response.geonames[0].distance;
-                                        cityPopulation = response.geonames[0].population;
-
-                                    } else {
-
-                                        console.log("CLOSEST CITY: no info");
-
-                                    }
-
-                                    console.log("CLOSEST CITY: " + cityName + ", " + cityCountryCode + ", (" + cityDistance + " km)");
-
-
-                                    // API KEY THAT FINDS A LIST OF POSTAL CODES BASED ON LAT and LONG COORDINATES
-                                    // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
-                                    var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=100&unit=Km";
-
-
-
-                                    // THIRD AJAX CALL TO GET NEARBY POSTAL CODES
-                                    // FROM THE LAT AND LONG OF THE NEARBY CITY OR FEATURE ITSELF
-                                    $.ajax({
-                                            url: ezcmdPostalCodes,
-                                            method: "GET"
-                                        })
-                                        .then(function (response) {
-
-                                            // console the object containing all nearby postal codes (list of 100 place objects)
-                                            // console.log(response);
-
-                                            if (response.search_results > 0) {
-
-                                                let nearPlaceName = response.search_results[0].place_name;
-                                                let nearPlacePostalCode = response.search_results[0].postal_code;
-                                                let nearPlaceCountryCode = response.search_results[0].country_code;
-                                                let nearPlaceCountryName = response.search_results[0].country_name;
-                                                let nearPlaceDistance = Math.floor(response.search_results[0].distance);
-
-                                            } else {
-
-                                                console.log("WIFI: no info");
-
-                                                return;
-
-                                            }
-
-                                            // API KEY for WIGLE SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                            var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
-
-                                            // AJAX CALL for WIGLE: SEND COUNTRY CODE, GET ALL POSTAL CODES AND WIFI HOTSPOTS
-                                            // REQUIRES username:token AS A Base64 Basic Authorization HTTP Header
-                                            $.ajax({
-                                                    headers: {
-                                                        'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
-                                                    },
-                                                    url: wigleHotspots,
-                                                    method: "GET"
-                                                })
-                                                .then(function (response) {
-
-                                                    // console.log(response);
-
-                                                    let nearPlaceWifi = 0;
-
-                                                    for (let k = 0; k < response.postalCode.length; k++) {
-
-                                                        let listPostalCode = response.postalCode[k].postalCode;
-                                                        let listHotSpots = response.postalCode[k].count;
-
-                                                        if (listPostalCode === nearPlacePostalCode) {
-
-                                                            nearPlaceWifi = listHotSpots;
-
-                                                            console.log("CLOSEST CITY: " + nearPlaceName + ", " + nearPlaceCountryName + " (" + nearPlaceDistance + " km)");
-
-                                                            console.log("WIFI: postal code " + nearPlacePostalCode + " " + nearPlaceCountryCode + " has " + nearPlaceWifi + " hotspots.");
-
-                                                        }
-                                                    }
-
-                                                });
-
-                                        });
-
-                                });
                         }
 
+                        getPostalCodes();
+
                     });
-
-            });
-
+            }
 
 
 
-            // WHEN THE "WIGLE!" BUTTON IS CLICKED...
-            $("#wigle_btn").on("click", function () {
 
-                // stop all the default submit form behaviors
-                event.preventDefault();
+            // ==========================================================================================================
+            // GET CLOSEST POSTAL CODE TO FEATURE LOCATION LAT+LONG COORDINATES FROM EZCMD API (limit 10,000 calls/month)
+            // ==========================================================================================================
 
-                // API KEY for WIGLE /api/v2/stats/regions
-                // Get statistics for a specified country, organized by region
-                // SEND COUNTRY CODE, GET BACK A LIST OF POSTAL CODES WITH NUMBER OF WIFI HOTSPOTS
-                // var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
-                var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=US";
+            // getPostalCodes variables
+            var nearPlaceName;
+            var nearPlacePostalCode;
+            var nearPlaceCountryCode;
+            var nearPlaceCountryName;
+            var nearPlaceDistance;
 
-                // HERE'S THE AJAX CALL TO GET A LIST OF WIFI HOTSPOTS BY POSTAL CODE FROM WIGLE, BY COUNTRY
-                // NOTE THIS REQUEST REQUIRES SENDING username:token AS A Base64 Basic Authorization HTTP Header
+
+            function getPostalCodes() {
+
+                var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + featureLatitude + "," + featureLongitude + "&within=100&unit=Km";
+
+                $.ajax({
+                        url: ezcmdPostalCodes,
+                        method: "GET"
+                    })
+                    .then(function (response) {
+
+                        if (response.search_results.length > 0) {
+
+                            nearPlaceName = response.search_results[0].place_name.trim();
+                            nearPlacePostalCode = response.search_results[0].postal_code;
+                            nearPlaceCountryCode = response.search_results[0].country_code;
+                            nearPlaceCountryName = response.search_results[0].country_name;
+                            nearPlaceDistance = Math.round(response.search_results[0].distance * 10) / 10;
+
+                            console.log("CLOSEST CITY: " + nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " (" + nearPlaceDistance + " km)");
+
+                            getHotspots();
+
+                        } else if (featureLocation) {
+                            console.log("CLOSEST CITY: (" + featureLocation + ")");
+                            // console.log("WIFI: no info");
+                            return;
+                        } else {
+                            console.log("CLOSEST CITY: no info");
+                            // console.log("WIFI: no info");
+                            return;
+                        }
+                    });
+            }
+
+
+
+
+            // =====================================================================================
+            // GET # OF WIFI HOTSPOTS BY POSTAL CODE FROM WIGLE API (service is beta, no set limits)
+            // =====================================================================================
+
+            // getHotspots variables
+            var nearPlaceWifi = 0;
+            var listPostalCode;
+            var listHotSpots
+
+            // mini function to format thousands of WiFi numbers to k format
+            function kFormatter(num) {
+                return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
+            }
+
+            function getHotspots() {
+
+                var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
+
+                // this API required sending its authentication name:token as a Basic Authorization HTTP header in Base64 ...
+                // does that count as using a technology that we haven't discussed?
                 $.ajax({
                         headers: {
                             'Authorization': 'Basic ' + btoa('AID544c0365fdcc8c2463ec21d3590bbd23:8891f56fb22400d107dd8ee49d2798ff'),
@@ -297,58 +227,45 @@
                     })
                     .then(function (response) {
 
-                        // console.log(response);
-                        // console.log(response.postalCode);
-                        // console.log(response.postalCode[101]);
-                        console.log(response.postalCode[101].count);
-                        console.log(response.postalCode[101].postalCode);
+                        for (var k = 0; k < response.postalCode.length; k++) {
 
+                            listPostalCode = response.postalCode[k].postalCode;
+                            listHotSpots = kFormatter(response.postalCode[k].count);
+
+                            // console.log(listPostalCode);
+                            // console.log(listHotSpots);
+
+                            if (listPostalCode === nearPlacePostalCode) {
+
+                                nearPlaceWifi = listHotSpots;
+
+                                console.log("WIFI: " + nearPlaceName + " " + nearPlacePostalCode + " " + nearPlaceCountryCode + " has " + nearPlaceWifi + " hotspots");
+                            }
+                        }
                     });
+            }
 
+            // ============================================================================================================
+            // END OF GLOBAL VARIABLES AND FUNCTIONS DECLARATIONS
+            // ============================================================================================================
+
+
+            // ============================================================================================================
+            // APPLICATION'S TOP LEVEL FUNCTIONALITY: SET FEATURE TO SEARCH, and SEARCH BUTTON FUNCTION
+            // ============================================================================================================
+
+            $("#search_btn").on("click", function () {
+
+                event.preventDefault();
+
+                getFeatureName();
 
             });
 
+
             // END jQUERY FUNCTION
         });
-        // ----------------------------------------------------------------
-
-
-
-
-
-
-
-
-        // =========================================================
-        // ALTERNATE API FOR THE THIRD AJAX CALL, USING EZCMD INSTEAD OF GEONAMES
-        // TO GET A LIST OF POSTAL CODES NEAR A SET OF LAT+LONG COORDINATES
-        // =========================================================
-
-        // Returns all neighbouring locations worldwide for a given pair of lat,long coordinates.
-        // Example API call (click, don't be shy):
-        // https://ezcmd.com/apps/api_ezip_locator/nearby_locations_by_coords/[API_KEY]/[USER_ID]
-        // GET Parameters:
-        // Mandatory:
-        // coords=41.701627,-87.698364 // Latitude and Longitude pair of coordinates separated by comma.
-        // Optional:
-        // within=150 // The distance radius to search for neighbouring places within.
-        // unit=Miles // Either Miles or Km (please mind the upper-case M and K).
-        // group=place_name // Avoid duplicate results by grouping your results by any of the returned fields. Default grouping is by place_name. Group by id to get all zip codes.
-        // start=0 // The results are paginated. The start offset. Limit is always 100.
-
-
-        // API KEY THAT FINDS A LIST OF POSTAL CODES BASED ON LAT and LONG COORDINATES
-        // USE THE LAT AND LONG COORDINATES OF THE FEATURE, OR THE CITY? PROBABLY THE CITY.
-        // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong;
-
-        // var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + cityLat + "," + cityLong + "&within=10&unit=Km&group=" + cityName;
-
-        // console.log for ezcmdPostalCodes postal_codes
-        // console.log(response.search_results[0].postal_code);
-
-        // =========================================================
-        // =========================================================
-        // =========================================================
+        // ==============================
     </script>
 
 </body>
