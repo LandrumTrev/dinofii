@@ -1,17 +1,14 @@
-#submitButton {
-    border: solid .5px;
-    box-shadow: 4px 2px;
-}
 #submitButton span {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 #submitButton:hover {
     padding-right: 25px;
     background-image: url("../../images/map-bg.png");
     background-size: contain;
+    
 }
 #srch-term {
     box-shadow: 4px 2px;
@@ -24,4 +21,18 @@
     background-image: url("https://cdn.business2community.com/wp-content/uploads/2014/08/WiFi.jpg");
     background-size: contain;
 
+}
+
+.col-md-4 {
+    display: none;
+}
+#p {
+
+    color: blue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+.table {
+    width: 500px;
+    border: 1px solid black;
 }

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="reset/css" href="assets/CSS/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>RICH - TEST PAGE</title>
+
+    <style>
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Rich's Test Page</h2>
+
+        <form>
+
+            <div id="feature_input" class="input-group">
+
+                <select name="feature" class="custom-select" id="feature_options">
+                    <option value="" selected>select a feature:</option>
+                    <option value="RSRT">resort</option>
+                    <option value="SPA">spa</option>
+                    <option value="BAY">bay</option>
+                    <option value="FT">fort</option>
+                    <option value="CTRS">space center</option>
+                    <option value="CTRR">religious center</option>
+                    <option value="PAL">palace</option>
+                    <option value="PGDA">pagoda</option>
+                    <option value="CNYN">canyon</option>
+                    <option value="MESU">mesa</option>
+                </select>
+
+                <div class="input-group-append">
+                    <input id="search_btn" type="submit" class="btn btn-primary" name="submit" value="SEARCH">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/JS/script.js"></script>
+
+    <script src="assets/JS/selectFeature.js"></script>
+
+
+    <script>
+        // START jQUERY FUNCTION
+        // ----------------------------------------------------------------
+        $(document).ready(function () {
+
+
+            // -----------------------------------------------------
+            // CODE BELOW SETS THE VALUE OF featureCode WHEN USER CHANGES <select> <option>
+            // -----------------------------------------------------
+
+            // THIS IS THE VAR FOR THE FEATURE CODE (like: SPA) THAT WILL BE INSERTED INTO THE geonamesLocationURL
+            var featureCode;
+
+            // THIS IS THE FUNCTION THAT GETS THE featureCode VALUE FROM THE <select> <option>
+            function getFeatureCode() {
+
+                // create an Array from the value of all <form> input data
+                // here, there's just one value, but .serializeArray() gives the best output data format
+                var fCode = $("form").serializeArray();
+
+                // set the value of featureCode to be the value of value { value: "SPA" } property of the first object in Array
+                featureCode = fCode[0].value;
+
+                // console log's the fCode Array of 1 Object:
+                // [{ name: "feature", value: "SPA"}]
+                console.log(fCode);
+
+                // console log's the value of "value" in: 
+                // [{ name: "feature", value: "SPA"}]
+                console.log(fCode[0].value);
+            }
+
+            // AND THEN WHENEVER THE USER SELECTS A SEARCH TERM FROM <select>,
+            // run getFeatureCode() to update the value of featureCode
+            $("select").on("change", getFeatureCode);
+
+
+            // -----------------------------------------------------
+            // CODE BELOW INSERTS THE featureCode INTO THE API STRING,
+            // AND MAKES THE AJAX CALL TO THE API, GETTING AN ARRAY OF MATCHING LOCATION OBJECTS
+            // -----------------------------------------------------
+
+            // WHEN THE "SEARCH" BUTTON IS CLICKED...
+            $("#search_btn").on("click", function () {
+
+                // stop all the default submit form behaviors
+                event.preventDefault();
+
+                // THIS IS THE API URL STRING TO CALL FOR A LIST OF LOCATIONS THAT HAVE THE featureCode
+                var geonamesLocationURL = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&username=ghostfountain";
+
+                // HERE'S THE FIRST AJAX CALL TO GET LOCATIONS BASED ON FEATURE CODE (SEARCH TERM)
+                $.ajax({
+                        url: geonamesLocationURL,
+                        method: "GET"
+                    })
+                    .then(function (response) {
+
+                        // console log the JSON Object data that comes back from the API call
+                        console.log(response);
+
+                        // get the countryCode, lat, and lng values of each location object
+                        var fCountryCode;
+                        var fLatitude;
+                        var fLongitude;
+
+                        // console log the number of location object we got back from the API
+                        // console.log(response.geonames.length);
+
+                        // loop through all location Objects in the Array (response)
+                        for (let i = 0; i < response.geonames.length; i++) {
+
+                            // get the countryCode, lat, and lng values of each location object
+                            fCountryCode = response.geonames[i].countryCode;
+                            // console.log(fCountryCode);
+                            fLatitude = response.geonames[i].lat;
+                            // console.log(fLatitude);
+                            fLongitude = response.geonames[i].lng;
+                            // console.log(fLongitude);
+
+                            // API KEY THAT FINDS UP TO 5 OF THE CLOSEST POSTAL CODES TO A LAT/LONG LOCATION
+                            // var geonamesNearbyPostalCodes = "http://api.geonames.org/findNearbyPostalCodesJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&username=ghostfountain";
+
+                            // API KEY THAT FINDS NEAREST POPULATED AREAS
+                            var geonamesNearbyPlaceName = "http://api.geonames.org/findNearbyPlaceNameJSON?lat=" + fLatitude + "&lng=" + fLongitude + "&username=ghostfountain";
+
+
+                            // Find nearby populated place / reverse geocoding
+                            // Webservice Type : REST 
+                            // Url : api.geonames.org/findNearbyPlaceName?
+                            // Parameters : lat,lng,
+                            // lang: language of returned 'name' element (the pseudo language code 'local' will return it in local language),
+                            // radius: radius in km (optional), maxRows: max number of rows (default 10)
+                            // style: SHORT,MEDIUM,LONG,FULL (default = MEDIUM), verbosity of returned xml document
+                            // localCountry: in border areas this parameter will restrict the search on the local country, value=true
+                            // cities: optional filter parameter with three possible values 'cities1000', 'cities5000','cities15000'. See the download readme for further infos
+                            // Result : returns the closest populated place (feature class=P) for the lat/lng query as xml document. The unit of the distance element is 'km'. 
+
+
+                            // HERE'S THE SECOND AJAX CALL TO GET...
+                            $.ajax({
+                                    url: geonamesNearbyPlaceName,
+                                    method: "GET"
+                                })
+                                .then(function (response) {
+
+                                    // console log the JSON Object data that comes back from the API call
+                                    // console.log(response);
+
+                                    // get the closest populated area name near the feature
+                                    var nearbyCity = response.geonames[0].name;
+
+                                    // console log the name of the nearby city
+                                    console.log(nearbyCity);
+
+
+                                    
+
+                                    // API KEY THAT FINDS A LIST OF POSTAL CODES FOR PLACE NAMES
+                                    var geonamesCityPostalCodes = "http://api.geonames.org/postalCodeSearchJSON?placename=" + nearbyCity + "&country=" + fCountryCode + "&maxRows=50&username=ghostfountain"
+
+                                    // // HERE'S THE SECOND AJAX CALL TO GET...
+                                    // $.ajax({
+                                    //         url: geonamesNearbyPlaceName,
+                                    //         method: "GET"
+                                    //     })
+                                    //     .then(function (response) {
+
+                                    //         // console log the JSON Object data that comes back from the API call
+                                    //         console.log(response);
+
+                                    //     });
+
+                                });
+                        }
+
+
+                        // THE API TO SEND THE countryCode TO, AND GET BACK THE NUMBER OF HOTSPOTS IN EACH POSTAL CODE
+                        // https://api.wigle.net/api/v2/stats/regions?country=US
+
+                    });
+
+                console.log(geonamesLocationURL);
+            });
+
+
+
+
+
+
+
+
+            // END jQUERY FUNCTION
+        });
+        // ----------------------------------------------------------------
+    </script>
+
+</body>
+
+</html>
