@@ -56,10 +56,81 @@ var featureArray = [
         name: "bay",
         value: "BAY",
     },
-
-
-];
-
+    {
+        name: "bays",
+        value: "BAYS",
+    },
+    {
+        name: "bright",
+        value: "BGHT",
+    },
+    {
+        name: "bank",
+        value: "BNK",
+    },
+    {
+        name: "stream bank",
+        value: "BNKR",
+    },
+    {
+        name: "stream bank",
+        value: "BNKR",
+    },{
+        name: "section bank",
+        value: "BNKX",
+    },
+    {
+        name: "bog",
+        value: "BOG",
+    },
+    {
+        name: "icecap",
+        value: "CAPG",
+    },
+    {
+        name: "channel",
+        value: "CHN",
+    },
+    {
+        name: "lake channel",
+        value: "CHNL",
+    },
+    {
+        name: "marine channel",
+        value: "CHNM",
+    },
+    {
+        name: "navigation channel",
+        value: "CHNN",
+    },
+    {
+        name: "confluence",
+        value: "CNFL",
+    },
+    {
+        name: "canal",
+        value: "CNL",
+    },
+    {
+        name: "aqueduct",
+        value: "CNLA",
+    },
+    {
+        name: "canal bend",
+        value: "CNLB",
+    },
+    {
+        name: "drainage canal",
+        value: "CNLD",
+    },
+    {
+        name: "irrigation canal",
+        value: "CNLI",
+    },
+    {
+        name: "navigation canals",
+        value: "CNLN",
+    },
 // TURN THIS DATA INTO A JAVASCRIPT ARRAY OF OBJECTS, WHICH WILL THEN BUILD ALL THE <option></option> ELEMENTS
 // FOR THE <select> FIELD.
 
@@ -92,70 +163,162 @@ var featureArray = [
 // H.CNLSB	underground irrigation canal(s)	a gently inclined underground tunnel bringing water for irrigation from aquifers
 // H.CNLX	section of canal	
 // H.COVE	cove(s)	a small coastal indentation, smaller than a bay
+{
+    name: "coves",
+    value: "COVE",
+},
 // H.CRKT	tidal creek(s)	a meandering channel in a coastal wetland subject to bi-directional tidal currents
+{
+    name: "tidal creeks",
+    value: "CRKT",
+},
 // H.CRNT	current	a horizontal flow of water in a given direction with uniform velocity
 // H.CUTF	cutoff	a channel formed as a result of a stream cutting through a meander neck
 // H.DCK	dock(s)	a waterway between two piers, or cut into the land for the berthing of ships
+{
+    name: "docks",
+    value: "DCK",
+},
 // H.DCKB	docking basin	a part of a harbor where ships dock
 // H.DOMG	icecap dome	a comparatively elevated area on an icecap
+{
+    name: "icecap dome",
+    value: "DOMG",
+},
 // H.DPRG	icecap depression	a comparatively depressed area on an icecap
 // H.DTCH	ditch	a small artificial watercourse dug for draining or irrigating the land
+{
+    name: "ditch",
+    value: "DTCH",
+},
 // H.DTCHD	drainage ditch	a ditch which serves to drain the land
 // H.DTCHI	irrigation ditch	a ditch which serves to distribute irrigation water
 // H.DTCHM	ditch mouth(s)	an area where a drainage ditch enters a lagoon, lake or bay
 // H.ESTY	estuary	a funnel-shaped stream mouth or embayment where fresh water mixes with sea water under tidal influences
 // H.FISH	fishing area	a fishing ground, bank or area where fishermen go to catch fish
+{
+    name: "fishing area",
+    value: "FISH",
+},
 // H.FJD	fjord	a long, narrow, steep-walled, deep-water arm of the sea at high latitudes, usually along mountainous coasts
 // H.FJDS	fjords	long, narrow, steep-walled, deep-water arms of the sea at high latitudes, usually along mountainous coasts
 // H.FLLS	waterfall(s)	a perpendicular or very steep descent of the water of a stream
+{
+    name: "waterfalls",
+    value: "FLLS",
+},
 // H.FLLSX	section of waterfall(s)	
 // H.FLTM	mud flat(s)	a relatively level area of mud either between high and low tide lines, or subject to flooding
 // H.FLTT	tidal flat(s)	a large flat area of mud or sand attached to the shore and alternately covered and uncovered by the tide
 // H.GLCR	glacier(s)	a mass of ice, usually at high latitudes or high elevations, with sufficient thickness to flow away from the source area in lobes, tongues, or masses
+{
+    name: "glaciers",
+    value: "GLCR",
+},
 // H.GULF	gulf	a large recess in the coastline, larger than a bay
+{
+    name: "gulf",
+    value: "GULF",
+},
 // H.GYSR	geyser	a type of hot spring with intermittent eruptions of jets of hot water and steam
+{
+    name: "geyser",
+    value: "GYSR",
+},
 // H.HBR	harbor(s)	a haven or space of deep water so sheltered by the adjacent land as to afford a safe anchorage for ships
+{
+    name: "harbor",
+    value: "HBR",
+},
 // H.HBRX	section of harbor	
 // H.INLT	inlet	a narrow waterway extending into the land, or connecting a bay or lagoon with a larger body of water
 // H.INLTQ	former inlet	an inlet which has been filled in, or blocked by deposits
 // H.LBED	lake bed(s)	a dried up or drained area of a former lake
 // H.LGN	lagoon	a shallow coastal waterbody, completely or partly separated from a larger body of water by a barrier island, coral reef or other depositional feature
+{
+    name: "lagoon",
+    value: "LGN",
+},
 // H.LGNS	lagoons	shallow coastal waterbodies, completely or partly separated from a larger body of water by a barrier island, coral reef or other depositional feature
 // H.LGNX	section of lagoon	
 // H.LK	lake	a large inland body of standing water
+{
+    name: "lake",
+    value: "LK",
+},
 // H.LKC	crater lake	a lake in a crater or caldera
 // H.LKI	intermittent lake	
 // H.LKN	salt lake	an inland body of salt water with no outlet
+{
+    name: "salt lake",
+    value: "LKN",
+},
 // H.LKNI	intermittent salt lake	
 // H.LKO	oxbow lake	a crescent-shaped lake commonly found adjacent to meandering streams
 // H.LKOI	intermittent oxbow lake	
 // H.LKS	lakes	large inland bodies of standing water
 // H.LKSB	underground lake	a standing body of water in a cave
+{
+    name: "underground lake",
+    value: "LKSB",
+},
 // H.LKSC	crater lakes	lakes in a crater or caldera
 // H.LKSI	intermittent lakes	
 // H.LKSN	salt lakes	inland bodies of salt water with no outlet
 // H.LKSNI	intermittent salt lakes	
 // H.LKX	section of lake	
+{
+    name: "lakes",
+    value: "LKS",
+},
 // H.MFGN	salt evaporation ponds	diked salt ponds used in the production of solar evaporated salt
 // H.MGV	mangrove swamp	a tropical tidal mud flat characterized by mangrove vegetation
 // H.MOOR	moor(s)	an area of open ground overlaid with wet peaty soils
 // H.MRSH	marsh(es)	a wetland dominated by grass-like vegetation
+{
+    name: "marsh",
+    value: "MRSH",
+},
 // H.MRSHN	salt marsh	a flat area, subject to periodic salt water inundation, dominated by grassy salt-tolerant plants
 // H.NRWS	narrows	a navigable narrow part of a bay, strait, river, etc.
 // H.OCN	ocean	one of the major divisions of the vast expanse of salt water covering part of the earth
+{
+    name: "ocean",
+    value: "OCN",
+},
 // H.OVF	overfalls	an area of breaking waves caused by the meeting of currents or by waves moving against the current
+{
+    name: "overfalls",
+    value: "OVF",
+},
 // H.PND	pond	a small standing waterbody
 // H.PNDI	intermittent pond	
 // H.PNDN	salt pond	a small standing body of salt water often in a marsh or swamp, usually along a seacoast
 // H.PNDNI	intermittent salt pond(s)	
 // H.PNDS	ponds	small standing waterbodies
+{
+    name: "ponds",
+    value: "PNDS",
+},
 // H.PNDSF	fishponds	ponds or enclosures in which fish are kept or raised
+{
+    name: "fishponds",
+    value: "PNDSF",
+},
 // H.PNDSI	intermittent ponds	
 // H.PNDSN	salt ponds	small standing bodies of salt water often in a marsh or swamp, usually along a seacoast
+{
+    name: "salt ponds",
+    value: "PNDSN",
+},
 // H.POOL	pool(s)	a small and comparatively still, deep part of a larger body of water such as a stream or harbor; or a small body of standing water
 // H.POOLI	intermittent pool	
 // H.RCH	reach	a straight section of a navigable stream or channel between two bends
 // H.RDGG	icecap ridge	a linear elevation on an icecap
+{
+    name: "icecap ridge",
+    value: "RDGG",
+},
 // H.RDST	roadstead	an open anchorage affording less protection than a harbor
 // H.RF	reef(s)	a surface-navigation hazard composed of consolidated material
 // H.RFC	coral reef(s)	a surface-navigation hazard composed of coral
@@ -173,35 +336,79 @@ var featureArray = [
 // H.SPNG	spring(s)	a place where ground water flows naturally out of the ground
 // H.SPNS	sulphur spring(s)	a place where sulphur ground water flows naturally out of the ground
 // H.SPNT	hot spring(s)	a place where hot ground water flows naturally out of the ground
+{
+    name: "hot springs",
+    value: "SPNT",
+},
 // H.STM	stream	a body of running water moving to a lower level in a channel on land
 // H.STMA	anabranch	a diverging branch flowing out of a main stream and rejoining it downstream
 // H.STMB	stream bend	a conspicuously curved or bent segment of a stream
 // H.STMC	canalized stream	a stream that has been substantially ditched, diked, or straightened
 // H.STMD	distributary(-ies)	a branch which flows away from the main stream, as in a delta or irrigation canal
+{
+    name: "distributary",
+    value: "STMD",
+},
 // H.STMH	headwaters	the source and upper part of a stream, including the upper drainage basin
+{
+    name: "headwaters",
+    value: "STMH",
+},
 // H.STMI	intermittent stream	
 // H.STMIX	section of intermittent stream	
 // H.STMM	stream mouth(s)	a place where a stream discharges into a lagoon, lake, or the sea
 // H.STMQ	abandoned watercourse	a former stream or distributary no longer carrying flowing water, but still evident due to lakes, wetland, topographic or vegetation patterns
+{
+    name: "abondoned watercourse",
+    value: "STMQ",
+},
 // H.STMS	streams	bodies of running water moving to a lower level in a channel on land
 // H.STMSB	lost river	a surface stream that disappears into an underground channel, or dries up in an arid area
+{
+    name: "lost river",
+    value: "STMSB",
+},
 // H.STMX	section of stream	
 // H.STRT	strait	a relatively narrow waterway, usually narrower and less extensive than a sound, connecting two larger bodies of water
 // H.SWMP	swamp	a wetland dominated by tree vegetation
+{
+    name: "swamp",
+    value: "SWMP",
+},
 // H.SYSI	irrigation system	a network of ditches and one or more of the following elements: water supply, reservoir, canal, pump, well, drain, etc.
 // H.TNLC	canal tunnel	a tunnel through which a canal passes
+{
+    name: "canal tunnel",
+    value: "TNLC",
+},
 // H.WAD	wadi	a valley or ravine, bounded by relatively steep banks, which in the rainy season becomes a watercourse; found primarily in North Africa and the Middle East
+{
+    name: "wadi",
+    value: "WAD",
+},
 // H.WADB	wadi bend	a conspicuously curved or bent segment of a wadi
 // H.WADJ	wadi junction	a place where two or more wadies join
 // H.WADM	wadi mouth	the lower terminus of a wadi where it widens into an adjoining floodplain, depression, or waterbody
 // H.WADS	wadies	valleys or ravines, bounded by relatively steep banks, which in the rainy season become watercourses; found primarily in North Africa and the Middle East
 // H.WADX	section of wadi	
 // H.WHRL	whirlpool	a turbulent, rotating movement of water in a stream
+{
+    name: "whirlpool",
+    value: "WHRL",
+},
 // H.WLL	well	a cylindrical hole, pit, or tunnel drilled or dug down to a depth from which water, oil, or gas can be pumped or brought to the surface
 // H.WLLQ	abandoned well	
 // H.WLLS	wells	cylindrical holes, pits, or tunnels drilled or dug down to a depth from which water, oil, or gas can be pumped or brought to the surface
 // H.WTLD	wetland	an area subject to inundation, usually characterized by bog, marsh, or swamp vegetation
-// H.WTLDI	intermittent wetland	
+{
+    name: "wetland",
+    value: "WTLD",
+},
+// H.WTLDI	intermittent wetland
+{
+    name: "intermittent wetland",
+    value: "WTLDI",
+},	
 // H.WTRC	watercourse	a natural, well-defined channel produced by flowing water, or an artificial channel designed to carry flowing water
 // H.WTRH	waterhole(s)	a natural hole, hollow, or small depression that contains water, used by man and animals, especially in arid areas
 // L.AGRC	agricultural colony	a tract of land set aside for agricultural settlement
@@ -723,3 +930,4 @@ var featureArray = [
 // V.TUND	tundra	a marshy, treeless, high latitude plain, dominated by mosses, lichens, and low shrub vegetation under permafrost conditions
 // V.VIN	vineyard	a planting of grapevines
 // V.VINS	vineyards	plantings of grapevines
+];
