@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
+        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -60,7 +60,6 @@ $(document).ready(function () {
 
                     } else {
 
-                        // featureCountryName = response.geonames[i].fclName;
                         featureCountryName = "";
                         console.log("DESTINATION: " + featureName);
 
@@ -69,7 +68,6 @@ $(document).ready(function () {
                     getPostalCodes();
 
                 }
-
             });
     }
 
@@ -171,7 +169,7 @@ $(document).ready(function () {
 
                     listPostalCode = response.postalCode[k].postalCode;
                     listHotSpots = kFormatter(response.postalCode[k].count);
-    
+
                     if (listPostalCode === nearPlacePostalCode) {
 
                         nearPlaceWifi = listHotSpots;
@@ -180,7 +178,7 @@ $(document).ready(function () {
 
                     }
                 }
-        
+
                 buildCard();
 
                 nearPlaceWifi = "?";
@@ -213,7 +211,7 @@ $(document).ready(function () {
 
     function buildCard() {
 
-        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>"+featureName+" : "+featureCountryName+"</h5><span class='font-weight-light' style='display:inline;float:right'>"+featureLatitude+", "+featureLongitude+"</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>"+nearPlaceName+" "+nearPlaceCountryCode+" "+nearPlacePostalCode+" ("+nearPlaceDistance+" km)</span><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:2px;'></i><span class='float-right font-weight-bold'>"+nearPlaceWifi+"</span></div></div>");
+        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + featureName + " : " + featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'>" + featureLatitude + ", " + featureLongitude + "</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " (" + nearPlaceDistance + " km)</span><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:2px;'></i><span class='float-right font-weight-bold'>" + nearPlaceWifi + "</span></div></div>");
     }
 
     // END jQUERY FUNCTION
