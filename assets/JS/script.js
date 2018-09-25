@@ -27,17 +27,17 @@ $(document).ready(function () {
     // ============================================================================================================
 
     // getFeatureName variables
-    var featureName;
-    var featureCountryName;
-    var featureCountryCode;
-    var featureLatitude;
-    var featureLongitude;
-    var featureLocation;
+    // var featureName;
+    // var featureCountryName;
+    // var featureCountryCode;
+    // var featureLatitude;
+    // var featureLongitude;
+    // var featureLocation;
 
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1&username=ghostfountain";
+        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -45,31 +45,32 @@ $(document).ready(function () {
             })
             .then(function (response) {
 
+
                 for (var i = 0; i < response.geonames.length; i++) {
 
-                    featureName = response.geonames[i].name;
-                    featureCountryCode = response.geonames[i].countryCode;
-                    featureLatitude = response.geonames[i].lat;
-                    featureLongitude = response.geonames[i].lng;
-                    featureLocation = response.geonames[i].fclName;
+                    var card = {};
+
+                    card.featureName = response.geonames[i].name;
+                    card.featureCountryCode = response.geonames[i].countryCode;
+                    card.featureLatitude = response.geonames[i].lat;
+                    card.featureLongitude = response.geonames[i].lng;
+                    card.featureLocation = response.geonames[i].fclName;
 
                     if (response.geonames[i].countryName) {
 
-                        featureCountryName = response.geonames[i].countryName;
-                        console.log("DESTINATION: " + featureName + ", " + featureCountryName);
+                        card.featureCountryName = response.geonames[i].countryName;
+                        console.log("DESTINATION: " + card.featureName + ", " + card.featureCountryName);
 
                     } else {
 
-                        // featureCountryName = response.geonames[i].fclName;
-                        featureCountryName = "";
-                        console.log("DESTINATION: " + featureName);
+                        card.featureCountryName = "";
+                        console.log("DESTINATION: " + card.featureName);
 
                     }
 
-                    getPostalCodes();
+                    getPostalCodes(card);
 
                 }
-
             });
     }
 
@@ -81,16 +82,16 @@ $(document).ready(function () {
     // ==========================================================================================================
 
     // getPostalCodes variables
-    var nearPlaceName;
-    var nearPlacePostalCode;
-    var nearPlaceCountryCode;
-    var nearPlaceCountryName;
-    var nearPlaceDistance;
+    // var nearPlaceName;
+    // var nearPlacePostalCode;
+    // var nearPlaceCountryCode;
+    // var nearPlaceCountryName;
+    // var nearPlaceDistance;
 
 
-    function getPostalCodes() {
+    function getPostalCodes(card) {
 
-        var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + featureLatitude + "," + featureLongitude + "&within=100&unit=Km";
+        var ezcmdPostalCodes = "https://ezcmd.com/apps/api_geo_postal_codes/nearby_locations_by_coords/866eaf56be3781d02011b80ebd0baef8/354?coords=" + card.featureLatitude + "," + card.featureLongitude + "&within=100&unit=Km";
 
         $.ajax({
                 url: ezcmdPostalCodes,
@@ -100,32 +101,32 @@ $(document).ready(function () {
 
                 if (response.search_results.length > 0) {
 
-                    nearPlaceName = response.search_results[0].place_name.trim();
-                    nearPlacePostalCode = response.search_results[0].postal_code;
-                    nearPlaceCountryCode = response.search_results[0].country_code;
-                    nearPlaceCountryName = response.search_results[0].country_name;
-                    nearPlaceDistance = Math.round(response.search_results[0].distance * 10) / 10;
+                    card.nearPlaceName = response.search_results[0].place_name.trim();
+                    card.nearPlacePostalCode = response.search_results[0].postal_code;
+                    card.nearPlaceCountryCode = response.search_results[0].country_code;
+                    card.nearPlaceCountryName = response.search_results[0].country_name;
+                    card.nearPlaceDistance = Math.round(response.search_results[0].distance * 10) / 10;
 
-                    console.log("CLOSEST CITY: " + nearPlaceName + " " + nearPlaceCountryCode + " " + nearPlacePostalCode + " (" + nearPlaceDistance + " km)");
+                    console.log("CLOSEST CITY: " + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)");
 
-                    getHotspots();
+                    getHotspots(card);
 
-                } else if (featureLocation) {
+                } else if (card.featureLocation) {
 
-                    nearPlaceName = featureLocation;
-                    nearPlacePostalCode = "";
-                    nearPlaceCountryCode = "";
-                    nearPlaceCountryName = "";
-                    nearPlaceDistance = "?";
+                    card.nearPlaceName = card.featureLocation;
+                    card.nearPlacePostalCode = "";
+                    card.nearPlaceCountryCode = "";
+                    card.nearPlaceCountryName = "";
+                    card.nearPlaceDistance = "?";
 
-                    getHotspots();
+                    getHotspots(card);
 
-                    console.log("CLOSEST CITY: (" + nearPlaceName + ")");
+                    console.log("CLOSEST CITY: (" + card.nearPlaceName + ")");
 
                     // return;
                 } else {
 
-                    getHotspots();
+                    getHotspots(card);
 
                     console.log("CLOSEST CITY: no info");
                     // return;
@@ -142,18 +143,20 @@ $(document).ready(function () {
     // =====================================================================================
 
     // getHotspots variables
-    var nearPlaceWifi = "?";
-    var listPostalCode;
-    var listHotSpots
+    // var nearPlaceWifi = "?";
+    // var listPostalCode;
+    // var listHotSpots
 
     // mini function to format thousands of WiFi numbers to k format
     function kFormatter(num) {
         return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
     }
 
-    function getHotspots() {
+    function getHotspots(card) {
 
-        var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + nearPlaceCountryCode;
+        var wigleHotspots = "https://api.wigle.net/api/v2/stats/regions?country=" + card.nearPlaceCountryCode;
+
+        card.nearPlaceWifi = "?";
 
         // this API required sending its authentication name:token as a Basic Authorization HTTP header in Base64 ...
         // does that count as using a technology that we haven't discussed?
@@ -169,21 +172,19 @@ $(document).ready(function () {
 
                 for (var k = 0; k < response.postalCode.length; k++) {
 
-                    listPostalCode = response.postalCode[k].postalCode;
-                    listHotSpots = kFormatter(response.postalCode[k].count);
-    
-                    if (listPostalCode === nearPlacePostalCode) {
+                    card.listPostalCode = response.postalCode[k].postalCode;
+                    card.listHotSpots = kFormatter(response.postalCode[k].count);
 
-                        nearPlaceWifi = listHotSpots;
+                    if (card.listPostalCode === card.nearPlacePostalCode) {
 
-                        console.log("WIFI: " + nearPlaceName + " " + nearPlacePostalCode + " " + nearPlaceCountryCode + " has " + nearPlaceWifi + " hotspots");
+                        card.nearPlaceWifi = card.listHotSpots;
+
+                        console.log("WIFI: " + card.nearPlaceName + " " + card.nearPlacePostalCode + " " + card.nearPlaceCountryCode + " has " + card.nearPlaceWifi + " hotspots");
 
                     }
                 }
-        
-                buildCard();
-
-                nearPlaceWifi = "?";
+                
+                buildCard(card);
 
             });
     }
@@ -211,9 +212,9 @@ $(document).ready(function () {
     // FUNCTION TO DYNAMICALLY BUILD A RESPONSE CARD FROM ALL RETURNED INFO
     // ============================================================================================================
 
-    function buildCard() {
+    function buildCard(card) {
 
-        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>"+featureName+" : "+featureCountryName+"</h5><span class='font-weight-light' style='display:inline;float:right'>"+featureLatitude+", "+featureLongitude+"</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>"+nearPlaceName+" "+nearPlaceCountryCode+" "+nearPlacePostalCode+" ("+nearPlaceDistance+" km)</span><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:2px;'></i><span class='float-right font-weight-bold'>"+nearPlaceWifi+"</span></div></div>");
+        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + card.featureName + " : " + card.featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'>" + card.featureLatitude + ", " + card.featureLongitude + "</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</span><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:2px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
     }
 
     // END jQUERY FUNCTION
