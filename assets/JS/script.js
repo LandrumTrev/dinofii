@@ -203,10 +203,15 @@ $(document).ready(function () {
         event.preventDefault();
 
         getFeatureName();
+        playAudio();
 
     });
 
+    var audio = document.getElementById("myAudio");
 
+    function playAudio() {
+        audio.play();
+    }
 
     // ============================================================================================================
     // FUNCTION TO DYNAMICALLY BUILD A RESPONSE CARD FROM ALL RETURNED INFO
