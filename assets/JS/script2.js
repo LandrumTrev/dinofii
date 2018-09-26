@@ -218,10 +218,9 @@ $(document).ready(function () {
     function buildCard(card) {
 
 
-        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + card.featureName + " : " + card.featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'>" + card.featureLatitude + ", " + card.featureLongitude + "</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</span><a href='https://wigle.net/map?maplat=" + card.featureLatitude + "&maplon=" + card.featureLongitude + "&mapzoom=12&coloring=density' target='_blank'><i class='fas fa-globe float-right text-dark' style='margin-left:10px;padding-top:3px;'></i></a><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:3px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
+        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + card.featureName + " : " + card.featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'><a href='https://www.google.com/maps/@" + card.featureLatitude + "," + card.featureLongitude + ",15z' target='_blank'>" + card.featureLatitude + ", " + card.featureLongitude + "</a></span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</span><a href='https://wigle.net/map?maplat=" + card.featureLatitude + "&maplon=" + card.featureLongitude + "&mapzoom=12&coloring=density' target='_blank'><i class='fas fa-globe float-right text-dark' style='margin-left:10px;padding-top:3px;'></i></a><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:3px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
 
-
-        
+    
     }
 
     // END jQUERY FUNCTION
