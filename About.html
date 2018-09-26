@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript " src="assets/JS/script.js "></script>
+    <!-- <script type="text/javascript " src="assets/JS/script.js "></script> -->
     <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
     <title>About Dinofii</title>
 </head>
@@ -14,58 +16,110 @@
 <body id="about">
 
     <container>
-        <div id="opening"></div>
+        <div>
+            <img id="opening" src="">   
+        </div>
+
     </container>
+
+    <section id="presentation">
+        
+        <div class="prezBox" id="features">
+            <h3>Features</h3>
+            <p></p>
+        </div>
+
+        <div class="prezBox" id="design">
+            <h3>Design</h3>
+            <p></p>
+        </div>
+        
+        <div class="prezBox" id="apiFaqs">
+            <h3>API Talk</h3>
+            <h2>First Api: GEONAMES</h2>
+            <p>Finds global locations (points of interest, not cities) based on a single feature code</p>
+            <h2>Second Api: EZCMD</h2>
+            <p>Finds postal codes and nearby cities based on latitude and longitude coordinates</p>
+            <h2>Third Api: WIGLY</h2>
+            <p>Finds the number of WiFi Hotspots in a given countries postal code</p>
+        </div>
+
+        <div class="prezBox" id="newTech">
+            <h3>New Technology Used</h3>
+            <p>Wigly API required sending its authentication name:token as a Basic Authorization HTTP header in Base64</p>
+            <img src="images/techUsed.jpg" alt="description of ajax tech" style="width:90%">
+            
+        </div>
+        <div class="prezBox" id="demo">
+            <h3>How about a demo??<br> Come on back after for more info</h3>
+            
+        </div>
+        <div class="prezBox" id="futureDev">
+            <h3>The Future of DiNofii</h3>
+            <p>Dynamically generated page with more info about the destination, including:<br>Embassy/Passport/Travel information<br>Expat/Lodging/meetups<br>Eventually, links to purchase travel/booking/etc...<p>
+            <p>Embedded map with with markers for destination and closest city (and travel route between?)</p>
+            <p>Pictures! Pictures! Pictures!</p>
+            <p>Translators/Currency Calculator/Local Guides(info and in person)</p>
+
+        </div>
+    
+    </section>
 
 
     <script>
+
+var prezDisplay = $("#presentation");
+            prezDisplay.hide();
+
         setTimeout(twoSeconds, 1000 * 2);
-        setTimeout(fourSeconds, 1000 * 4);
-        setTimeout(sixSeconds, 1000 * 6);
-        setTimeout(eightSeconds, 1000 * 8);
-        setTimeout(tenSeconds, 1000 * 10);
-        setTimeout(twelveSeconds, 1000 * 12);
-        setTimeout(fourteenSeconds, 1000 * 14);
-        setTimeout(sixteenSeconds, 1000 * 16);
-
-
+        setTimeout(fourSeconds, 1000 * 3);
+        setTimeout(sixSeconds, 1000 * 4);
+        setTimeout(eightSeconds, 1000 * 5);
+        setTimeout(tenSeconds, 1000 * 6);
+        setTimeout(twelveSeconds, 1000 * 7);
+        setTimeout(fourteenSeconds, 1000 * 8);
+        setTimeout(sixteenSeconds, 1000 * 9);
+        setTimeout(eighteenSeconds, 1000 * 10);
 
 
         function twoSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino1.png" />')
+            $("#opening").attr('src', "images/Dino1.png");
         }
         function fourSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino2.png" />')
+            $("#opening").attr('src', "images/Dino2.png");
 
         }
         function sixSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino3.png" />')
+            $("#opening").attr('src', "images/Dino3.png");
 
         }
         function eightSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino4.png" />')
+            $("#opening").attr('src', "images/Dino4.png");
 
         }
         function tenSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino5.png" />')
+            $("#opening").attr('src', "images/Dino5.png");
         }
         function twelveSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino6.png" />')
+            $("#opening").attr('src', "images/Dino6.png");
 
         }
         function fourteenSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino7.png" />')
+            $("#opening").attr('src', "images/Dino7.png");
 
         }
         function sixteenSeconds() {
-            $("#opening").html('<img id="img1" src="images/Dino8.png" />')
+            $("#opening").attr('src', "images/Dino8.png");
 
         }
+        function eighteenSeconds() {
+            prezDisplay.show();
+        }
+    
 
     </script>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
 
 </body>
 

@@ -52,3 +52,10 @@ body {
 #about {
     background-color: #7fbdae;
 }
+.prezBox {
+    border: solid 2px;
+    margin-bottom: 10%;
+}
+h3 {
+    text-align: center;
+}
