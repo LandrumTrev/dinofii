@@ -24,7 +24,7 @@ body {
     max-width: 100%;
     position: relative;
     bottom: 1em;
-
+   
 }
 #name {
     font-family: 'Leckerli One', cursive;
@@ -44,4 +44,10 @@ body {
     bottom: 23%;
     left: 8%;
     font-size: 1.7em;
+}
+#p {
+    display: none;
+}
+#logofade{
+    display: none;
 }
