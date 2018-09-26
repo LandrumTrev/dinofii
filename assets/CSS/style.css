@@ -55,6 +55,7 @@ body {
 .prezBox {
     border: solid 2px;
     margin-bottom: 10%;
+    background-color: whitesmoke;
 }
 h3 {
     text-align: center;
@@ -64,4 +65,19 @@ h3 {
 }
 #logofade{
     display: none;
+}
+#return {
+    height: 14em;
+    width: 27em;
+    border-radius: 100%;
+    box-shadow: 1px 1px;
+    position: relative;
+    left: 39%;
+}
+#return:hover {
+    background-image: url("../../images/dinoTranspng.png");
+    background-position-y: center;
+    background-size: cover;
+    cursor: pointer;
+    background-color: lightseagreen;
 }
