@@ -1178,16 +1178,3 @@ var featureArray = [
     value: "VINS",
 },
 ];
-
-//var x = document.getElementById("myAudio"); 
-
-//function playAudio() { 
- //   x.play(); 
-//} 
-
-//function pauseAudio() { 
- //   x.pause(); 
-//}
-
-//<audio id="myAudio">
-//  <source src=<iframe width="964" height="542" src="audio.dinosound"></audio>
