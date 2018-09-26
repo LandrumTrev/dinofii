@@ -26,14 +26,23 @@
         
         <div class="prezBox" id="features">
             <h3>Features</h3>
-            <p></p>
+            <p>Basic functionality:</p>
+            <p>Select a geographical feature from a prepopulated list and recieve a selection of locations from all over the world!</p>
+            <p>Dinofii will display the most populated region nearest the feature which you search for and will display a WIFI SCORE based on the number of WiFi hotspots found in the nearest postal code. (more on this later)</p>
+            <p>Using this search the user can research and plan an adventure without the worry of losing connectivity along the way</p>
+            <p>Stay connected.  Stay working.  See the world.</p>
         </div>
 
         <div class="prezBox" id="design">
             <h3>Design</h3>
-            <p></p>
+            <p>Using html, Bootstrap, and CSS we have designed a minimal and user friendly interface.</p>
+            <p>We have created a simple search bar with prepopulated features that you can search or browse.</p>
+            <img src="images/searchBar.png" style="width:90%">
+            <p>Results are dynamicly displayed on Bootstrap Cards and stack as you continue to search.</p>
+            <img src="images/displayCard.png" style="width:90%">
+            <p>Displayed results come with a link to map your destination, and gather more informtaion.</p>
         </div>
-        
+
         <div class="prezBox" id="apiFaqs">
             <h3>API Talk</h3>
             <h2>First Api: GEONAMES</h2>
@@ -51,20 +60,28 @@
             
         </div>
         <div class="prezBox" id="demo">
-            <h3>How about a demo??<br> Come on back after for more info</h3>
+            <h3>How about a demo??</h3>
+            <p>Come on back here after a demo and we will wrap things up.</p>
             
         </div>
         <div class="prezBox" id="futureDev">
             <h3>The Future of DiNofii</h3>
-            <p>Dynamically generated page with more info about the destination, including:<br>Embassy/Passport/Travel information<br>Expat/Lodging/meetups<br>Eventually, links to purchase travel/booking/etc...<p>
+            <p>Dynamically generated page with more info about the destination, including:</p>
+            <p>Embassy/Passport/Travel information</p>
+            <p>Expat/Lodging/meetups</p>
+            <p>Eventually, links to purchase travel/booking/etc...<p>
             <p>Embedded map with with markers for destination and closest city (and travel route between?)</p>
             <p>Pictures! Pictures! Pictures!</p>
             <p>Translators/Currency Calculator/Local Guides(info and in person)</p>
 
         </div>
-    
-    </section>
 
+        <h3>Thanks for exploring DiNofii! Continue exploring below!</h3>
+        <button id="return">
+            <p>Click to Search</p>
+        </button>
+    </section>
+    
 
     <script>
 
@@ -113,7 +130,11 @@ var prezDisplay = $("#presentation");
 
         }
         function eighteenSeconds() {
+            $("#opening").attr('src', "images/Dino9.png");
             prezDisplay.show();
+            $("#return").on("click", function() {
+                window.location.href = 'index.html'
+            })
         }
     
 
