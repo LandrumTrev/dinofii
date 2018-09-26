@@ -199,8 +199,15 @@ $(document).ready(function () {
         event.preventDefault();
 
         getFeatureName();
+        playAudio();
 
     });
+
+    var audio = document.getElementById("myAudio");
+
+    function playAudio() {
+        audio.play();
+    }
 
 
 

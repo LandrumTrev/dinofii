@@ -59,10 +59,81 @@ var featureArray = [
         name: "bay",
         value: "BAY",
     },
-
-
-];
-
+    {
+        name: "bays",
+        value: "BAYS",
+    },
+    {
+        name: "bright",
+        value: "BGHT",
+    },
+    {
+        name: "bank",
+        value: "BNK",
+    },
+    {
+        name: "stream bank",
+        value: "BNKR",
+    },
+    {
+        name: "stream bank",
+        value: "BNKR",
+    },{
+        name: "section bank",
+        value: "BNKX",
+    },
+    {
+        name: "bog",
+        value: "BOG",
+    },
+    {
+        name: "icecap",
+        value: "CAPG",
+    },
+    {
+        name: "channel",
+        value: "CHN",
+    },
+    {
+        name: "lake channel",
+        value: "CHNL",
+    },
+    {
+        name: "marine channel",
+        value: "CHNM",
+    },
+    {
+        name: "navigation channel",
+        value: "CHNN",
+    },
+    {
+        name: "confluence",
+        value: "CNFL",
+    },
+    {
+        name: "canal",
+        value: "CNL",
+    },
+    {
+        name: "aqueduct",
+        value: "CNLA",
+    },
+    {
+        name: "canal bend",
+        value: "CNLB",
+    },
+    {
+        name: "drainage canal",
+        value: "CNLD",
+    },
+    {
+        name: "irrigation canal",
+        value: "CNLI",
+    },
+    {
+        name: "navigation canals",
+        value: "CNLN",
+    },
 // TURN THIS DATA INTO A JAVASCRIPT ARRAY OF OBJECTS, WHICH WILL THEN BUILD ALL THE <option></option> ELEMENTS
 // FOR THE <select> FIELD.
 
@@ -95,70 +166,170 @@ var featureArray = [
 // H.CNLSB	underground irrigation canal(s)	a gently inclined underground tunnel bringing water for irrigation from aquifers
 // H.CNLX	section of canal	
 // H.COVE	cove(s)	a small coastal indentation, smaller than a bay
+{
+    name: "coves",
+    value: "COVE",
+},
 // H.CRKT	tidal creek(s)	a meandering channel in a coastal wetland subject to bi-directional tidal currents
+{
+    name: "tidal creeks",
+    value: "CRKT",
+},
 // H.CRNT	current	a horizontal flow of water in a given direction with uniform velocity
 // H.CUTF	cutoff	a channel formed as a result of a stream cutting through a meander neck
 // H.DCK	dock(s)	a waterway between two piers, or cut into the land for the berthing of ships
+{
+    name: "docks",
+    value: "DCK",
+},
 // H.DCKB	docking basin	a part of a harbor where ships dock
 // H.DOMG	icecap dome	a comparatively elevated area on an icecap
+{
+    name: "icecap dome",
+    value: "DOMG",
+},
 // H.DPRG	icecap depression	a comparatively depressed area on an icecap
 // H.DTCH	ditch	a small artificial watercourse dug for draining or irrigating the land
+{
+    name: "ditch",
+    value: "DTCH",
+},
 // H.DTCHD	drainage ditch	a ditch which serves to drain the land
 // H.DTCHI	irrigation ditch	a ditch which serves to distribute irrigation water
 // H.DTCHM	ditch mouth(s)	an area where a drainage ditch enters a lagoon, lake or bay
 // H.ESTY	estuary	a funnel-shaped stream mouth or embayment where fresh water mixes with sea water under tidal influences
 // H.FISH	fishing area	a fishing ground, bank or area where fishermen go to catch fish
+{
+    name: "fishing area",
+    value: "FISH",
+},
 // H.FJD	fjord	a long, narrow, steep-walled, deep-water arm of the sea at high latitudes, usually along mountainous coasts
 // H.FJDS	fjords	long, narrow, steep-walled, deep-water arms of the sea at high latitudes, usually along mountainous coasts
 // H.FLLS	waterfall(s)	a perpendicular or very steep descent of the water of a stream
+{
+    name: "waterfalls",
+    value: "FLLS",
+},
 // H.FLLSX	section of waterfall(s)	
 // H.FLTM	mud flat(s)	a relatively level area of mud either between high and low tide lines, or subject to flooding
 // H.FLTT	tidal flat(s)	a large flat area of mud or sand attached to the shore and alternately covered and uncovered by the tide
 // H.GLCR	glacier(s)	a mass of ice, usually at high latitudes or high elevations, with sufficient thickness to flow away from the source area in lobes, tongues, or masses
+{
+    name: "glaciers",
+    value: "GLCR",
+},
 // H.GULF	gulf	a large recess in the coastline, larger than a bay
+{
+    name: "gulf",
+    value: "GULF",
+},
 // H.GYSR	geyser	a type of hot spring with intermittent eruptions of jets of hot water and steam
+{
+    name: "geyser",
+    value: "GYSR",
+},
 // H.HBR	harbor(s)	a haven or space of deep water so sheltered by the adjacent land as to afford a safe anchorage for ships
+{
+    name: "harbor",
+    value: "HBR",
+},
 // H.HBRX	section of harbor	
 // H.INLT	inlet	a narrow waterway extending into the land, or connecting a bay or lagoon with a larger body of water
 // H.INLTQ	former inlet	an inlet which has been filled in, or blocked by deposits
 // H.LBED	lake bed(s)	a dried up or drained area of a former lake
 // H.LGN	lagoon	a shallow coastal waterbody, completely or partly separated from a larger body of water by a barrier island, coral reef or other depositional feature
+{
+    name: "lagoon",
+    value: "LGN",
+},
 // H.LGNS	lagoons	shallow coastal waterbodies, completely or partly separated from a larger body of water by a barrier island, coral reef or other depositional feature
 // H.LGNX	section of lagoon	
 // H.LK	lake	a large inland body of standing water
+{
+    name: "lake",
+    value: "LK",
+},
 // H.LKC	crater lake	a lake in a crater or caldera
 // H.LKI	intermittent lake	
 // H.LKN	salt lake	an inland body of salt water with no outlet
+{
+    name: "salt lake",
+    value: "LKN",
+},
 // H.LKNI	intermittent salt lake	
 // H.LKO	oxbow lake	a crescent-shaped lake commonly found adjacent to meandering streams
 // H.LKOI	intermittent oxbow lake	
 // H.LKS	lakes	large inland bodies of standing water
 // H.LKSB	underground lake	a standing body of water in a cave
+{
+    name: "underground lake",
+    value: "LKSB",
+},
 // H.LKSC	crater lakes	lakes in a crater or caldera
 // H.LKSI	intermittent lakes	
 // H.LKSN	salt lakes	inland bodies of salt water with no outlet
 // H.LKSNI	intermittent salt lakes	
 // H.LKX	section of lake	
+{
+    name: "lakes",
+    value: "LKS",
+},
 // H.MFGN	salt evaporation ponds	diked salt ponds used in the production of solar evaporated salt
 // H.MGV	mangrove swamp	a tropical tidal mud flat characterized by mangrove vegetation
 // H.MOOR	moor(s)	an area of open ground overlaid with wet peaty soils
 // H.MRSH	marsh(es)	a wetland dominated by grass-like vegetation
+{
+    name: "marsh",
+    value: "MRSH",
+},
 // H.MRSHN	salt marsh	a flat area, subject to periodic salt water inundation, dominated by grassy salt-tolerant plants
 // H.NRWS	narrows	a navigable narrow part of a bay, strait, river, etc.
 // H.OCN	ocean	one of the major divisions of the vast expanse of salt water covering part of the earth
+{
+    name: "ocean",
+    value: "OCN",
+},
 // H.OVF	overfalls	an area of breaking waves caused by the meeting of currents or by waves moving against the current
+{
+    name: "overfalls",
+    value: "OVF",
+},
 // H.PND	pond	a small standing waterbody
+{
+    name: "pond",
+    value: "PND",
+},
 // H.PNDI	intermittent pond	
 // H.PNDN	salt pond	a small standing body of salt water often in a marsh or swamp, usually along a seacoast
+{
+    name: "salt pond",
+    value: "PNDN",
+},
 // H.PNDNI	intermittent salt pond(s)	
 // H.PNDS	ponds	small standing waterbodies
+{
+    name: "ponds",
+    value: "PNDS",
+},
 // H.PNDSF	fishponds	ponds or enclosures in which fish are kept or raised
+{
+    name: "fishponds",
+    value: "PNDSF",
+},
 // H.PNDSI	intermittent ponds	
 // H.PNDSN	salt ponds	small standing bodies of salt water often in a marsh or swamp, usually along a seacoast
+{
+    name: "salt ponds",
+    value: "PNDSN",
+},
 // H.POOL	pool(s)	a small and comparatively still, deep part of a larger body of water such as a stream or harbor; or a small body of standing water
 // H.POOLI	intermittent pool	
 // H.RCH	reach	a straight section of a navigable stream or channel between two bends
 // H.RDGG	icecap ridge	a linear elevation on an icecap
+{
+    name: "icecap ridge",
+    value: "RDGG",
+},
 // H.RDST	roadstead	an open anchorage affording less protection than a harbor
 // H.RF	reef(s)	a surface-navigation hazard composed of consolidated material
 // H.RFC	coral reef(s)	a surface-navigation hazard composed of coral
@@ -176,35 +347,79 @@ var featureArray = [
 // H.SPNG	spring(s)	a place where ground water flows naturally out of the ground
 // H.SPNS	sulphur spring(s)	a place where sulphur ground water flows naturally out of the ground
 // H.SPNT	hot spring(s)	a place where hot ground water flows naturally out of the ground
+{
+    name: "hot springs",
+    value: "SPNT",
+},
 // H.STM	stream	a body of running water moving to a lower level in a channel on land
 // H.STMA	anabranch	a diverging branch flowing out of a main stream and rejoining it downstream
 // H.STMB	stream bend	a conspicuously curved or bent segment of a stream
 // H.STMC	canalized stream	a stream that has been substantially ditched, diked, or straightened
 // H.STMD	distributary(-ies)	a branch which flows away from the main stream, as in a delta or irrigation canal
+{
+    name: "distributary",
+    value: "STMD",
+},
 // H.STMH	headwaters	the source and upper part of a stream, including the upper drainage basin
+{
+    name: "headwaters",
+    value: "STMH",
+},
 // H.STMI	intermittent stream	
 // H.STMIX	section of intermittent stream	
 // H.STMM	stream mouth(s)	a place where a stream discharges into a lagoon, lake, or the sea
 // H.STMQ	abandoned watercourse	a former stream or distributary no longer carrying flowing water, but still evident due to lakes, wetland, topographic or vegetation patterns
+{
+    name: "abondoned watercourse",
+    value: "STMQ",
+},
 // H.STMS	streams	bodies of running water moving to a lower level in a channel on land
 // H.STMSB	lost river	a surface stream that disappears into an underground channel, or dries up in an arid area
+{
+    name: "lost river",
+    value: "STMSB",
+},
 // H.STMX	section of stream	
 // H.STRT	strait	a relatively narrow waterway, usually narrower and less extensive than a sound, connecting two larger bodies of water
 // H.SWMP	swamp	a wetland dominated by tree vegetation
+{
+    name: "swamp",
+    value: "SWMP",
+},
 // H.SYSI	irrigation system	a network of ditches and one or more of the following elements: water supply, reservoir, canal, pump, well, drain, etc.
 // H.TNLC	canal tunnel	a tunnel through which a canal passes
+{
+    name: "canal tunnel",
+    value: "TNLC",
+},
 // H.WAD	wadi	a valley or ravine, bounded by relatively steep banks, which in the rainy season becomes a watercourse; found primarily in North Africa and the Middle East
+{
+    name: "wadi",
+    value: "WAD",
+},
 // H.WADB	wadi bend	a conspicuously curved or bent segment of a wadi
 // H.WADJ	wadi junction	a place where two or more wadies join
 // H.WADM	wadi mouth	the lower terminus of a wadi where it widens into an adjoining floodplain, depression, or waterbody
 // H.WADS	wadies	valleys or ravines, bounded by relatively steep banks, which in the rainy season become watercourses; found primarily in North Africa and the Middle East
 // H.WADX	section of wadi	
 // H.WHRL	whirlpool	a turbulent, rotating movement of water in a stream
+{
+    name: "whirlpool",
+    value: "WHRL",
+},
 // H.WLL	well	a cylindrical hole, pit, or tunnel drilled or dug down to a depth from which water, oil, or gas can be pumped or brought to the surface
 // H.WLLQ	abandoned well	
 // H.WLLS	wells	cylindrical holes, pits, or tunnels drilled or dug down to a depth from which water, oil, or gas can be pumped or brought to the surface
 // H.WTLD	wetland	an area subject to inundation, usually characterized by bog, marsh, or swamp vegetation
-// H.WTLDI	intermittent wetland	
+{
+    name: "wetland",
+    value: "WTLD",
+},
+// H.WTLDI	intermittent wetland
+{
+    name: "intermittent wetland",
+    value: "WTLDI",
+},	
 // H.WTRC	watercourse	a natural, well-defined channel produced by flowing water, or an artificial channel designed to carry flowing water
 // H.WTRH	waterhole(s)	a natural hole, hollow, or small depression that contains water, used by man and animals, especially in arid areas
 // L.AGRC	agricultural colony	a tract of land set aside for agricultural settlement
@@ -656,73 +871,310 @@ var featureArray = [
 // U.CDAU	cordillera	an entire mountain system including the subordinate ranges, interior plateaus, and basins
 // U.CNSU	canyons	relatively narrow, deep depressions with steep sides, the bottom of which generally has a continuous slope
 // U.CNYU	canyon	a relatively narrow, deep depression with steep sides, the bottom of which generally has a continuous slope
+{
+    name: "canyons",
+    value: "CNSU",
+},
 // U.CRSU	continental rise	a gentle slope rising from oceanic depths towards the foot of a continental slope
+{
+    name: "continental rise",
+    value: "CRSU",
+},
 // U.DEPU	deep	a localized deep area within the confines of a larger feature, such as a trough, basin or trench
+{
+    name: "deep",
+    value: "DEPU",
+},
 // U.EDGU	shelf edge	a line along which there is a marked increase of slope at the outer margin of a continental shelf or island shelf
+{
+    name: "shelf",
+    value: "EDGU",
+},
 // U.ESCU	escarpment (or scarp)	an elongated and comparatively steep slope separating flat or gently sloping areas
+{
+    name: "escarpment",
+    value: "ESCU",
+},
 // U.FANU	fan	a relatively smooth feature normally sloping away from the lower termination of a canyon or canyon system
+{
+    name: "fan",
+    value: "FANU",
+},
 // U.FLTU	flat	a small level or nearly level area
+{
+    name: "flat",
+    value: "FLTU",
+},
 // U.FRZU	fracture zone	an extensive linear zone of irregular topography of the sea floor, characterized by steep-sided or asymmetrical ridges, troughs, or escarpments
+{
+    name: "fracture zone",
+    value: "FRZU",
+},
 // U.FURU	furrow	a closed, linear, narrow, shallow depression
+{
+    name: "furrow",
+    value: "FURU",
+},
 // U.GAPU	gap	a narrow break in a ridge or rise
+{
+    name: "gap ",
+    value: "GAPU",
+},
 // U.GLYU	gully	a small valley-like feature
+{
+    name: "gully",
+    value: "GLYU",
+},
 // U.HLLU	hill	an elevation rising generally less than 500 meters
 // U.HLSU	hills	elevations rising generally less than 500 meters
+{
+    name: "hills",
+    value: "HLSU",
+},
 // U.HOLU	hole	a small depression of the sea floor
+{
+    name: "hole",
+    value: "HOLU",
+},
 // U.KNLU	knoll	an elevation rising generally more than 500 meters and less than 1,000 meters and of limited extent across the summit
 // U.KNSU	knolls	elevations rising generally more than 500 meters and less than 1,000 meters and of limited extent across the summits
+{
+    name: "knolls",
+    value: "KNSU",
+},
 // U.LDGU	ledge	a rocky projection or outcrop, commonly linear and near shore
+{
+    name: "ledge",
+    value: "LDGU",
+},
 // U.LEVU	levee	an embankment bordering a canyon, valley, or seachannel
+{
+    name: "levee",
+    value: "LEVU",
+},
 // U.MESU	mesa	an isolated, extensive, flat-topped elevation on the shelf, with relatively steep sides
+{
+    name: "mesa",
+    value: "MESU",
+},
 // U.MNDU	mound	a low, isolated, rounded hill
+{
+    name: "mound",
+    value: "MNDU",
+},
 // U.MOTU	moat	an annular depression that may not be continuous, located at the base of many seamounts, islands, and other isolated elevations
+{
+    name: "moat",
+    value: "MOTU",
+},
 // U.MTU	mountain	a well-delineated subdivision of a large and complex positive feature
+{
+    name: "mountain",
+    value: "MTU",
+},
 // U.PKSU	peaks	prominent elevations, part of a larger feature, either pointed or of very limited extent across the summit
 // U.PKU	peak	a prominent elevation, part of a larger feature, either pointed or of very limited extent across the summit
+{
+    name: "peaks",
+    value: "PKSU",
+},
 // U.PLNU	plain	a flat, gently sloping or nearly level region
+{
+    name: "plain",
+    value: "PLNU",
+},
 // U.PLTU	plateau	a comparatively flat-topped feature of considerable extent, dropping off abruptly on one or more sides
+{
+    name: "plateau",
+    value: "PLTU",
+},
 // U.PNLU	pinnacle	a high tower or spire-shaped pillar of rock or coral, alone or cresting a summit
+{
+    name: "pinncale",
+    value: "PNLU",
+},
 // U.PRVU	province	a region identifiable by a group of similar physiographic features whose characteristics are markedly in contrast with surrounding areas
+{
+    name: "province",
+    value: "PRVU",
+},
 // U.RDGU	ridge	a long narrow elevation with steep sides
+{
+    name: "ridge",
+    value: "RDGU",
+},
 // U.RDSU	ridges	long narrow elevations with steep sides
 // U.RFSU	reefs	surface-navigation hazards composed of consolidated material
 // U.RFU	reef	a surface-navigation hazard composed of consolidated material
+{
+    name: "reef",
+    value: "RFU",
+},
 // U.RISU	rise	a broad elevation that rises gently, and generally smoothly, from the sea floor
+{
+    name: "rise",
+    value: "RISE",
+},
 // U.SCNU	seachannel	a continuously sloping, elongated depression commonly found in fans or plains and customarily bordered by levees on one or two sides
+{
+    name: "seachannel",
+    value: "SCNU",
+},
 // U.SCSU	seachannels	continuously sloping, elongated depressions commonly found in fans or plains and customarily bordered by levees on one or two sides
 // U.SDLU	saddle	a low part, resembling in shape a saddle, in a ridge or between contiguous seamounts
 // U.SHFU	shelf	a zone adjacent to a continent (or around an island) that extends from the low water line to a depth at which there is usually a marked increase of slope towards oceanic depths
+{
+    name: "shelf",
+    value: "SHFU",
+},
 // U.SHLU	shoal	a surface-navigation hazard composed of unconsolidated material
+{
+    name: "shoal",
+    value: "SHLU",
+},
 // U.SHSU	shoals	hazards to surface navigation composed of unconsolidated material
 // U.SHVU	shelf valley	a valley on the shelf, generally the shoreward extension of a canyon
+{
+    name: "shelf valley",
+    value: "SHVU",
+},
 // U.SILU	sill	the low part of a gap or saddle separating basins
+{
+    name: "sill",
+    value: "SILU",
+},
 // U.SLPU	slope	the slope seaward from the shelf edge to the beginning of a continental rise or the point where there is a general reduction in slope
+{
+    name: "slope",
+    value: "SLPU",
+},
 // U.SMSU	seamounts	elevations rising generally more than 1,000 meters and of limited extent across the summit
 // U.SMU	seamount	an elevation rising generally more than 1,000 meters and of limited extent across the summit
+{
+    name: "seamounts",
+    value: "SMU",
+},
 // U.SPRU	spur	a subordinate elevation, ridge, or rise projecting outward from a larger feature
+{
+    name: "spur",
+    value: "SPRU",
+},
 // U.TERU	terrace	a relatively flat horizontal or gently inclined surface, sometimes long and narrow, which is bounded by a steeper ascending slope on one side and by a steep descending slope on the opposite side
+{
+    name: "terrace",
+    value: "TERU",
+},
 // U.TMSU	tablemounts (or guyots)	seamounts having a comparatively smooth, flat top
+{
+    name: "tablemounts",
+    value: "TMSU",
+},
 // U.TMTU	tablemount (or guyot)	a seamount having a comparatively smooth, flat top
 // U.TNGU	tongue	an elongate (tongue-like) extension of a flat sea floor into an adjacent higher feature
+{
+    name: "tounge",
+    value: "TNGU",
+},
 // U.TRGU	trough	a long depression of the sea floor characteristically flat bottomed and steep sided, and normally shallower than a trench
 // U.TRNU	trench	a long, narrow, characteristically very deep and asymmetrical depression of the sea floor, with relatively steep sides
+{
+    name: "trench",
+    value: "TRNU",
+},
 // U.VALU	valley	a relatively shallow, wide depression, the bottom of which usually has a continuous gradient
 // U.VLSU	valleys	a relatively shallow, wide depression, the bottom of which usually has a continuous gradient
+{
+    name: "valley",
+    value: "VLSU",
+},
 // V.BUSH	bush(es)	a small clump of conspicuous bushes in an otherwise bare area
+{
+    name: "bushes",
+    value: "BUSH",
+},
 // V.CULT	cultivated area	an area under cultivation
+{
+    name: "cultivated",
+    value: "CULT",
+},
 // V.FRST	forest(s)	an area dominated by tree vegetation
+{
+    name: "forests",
+    value: "FRST",
+},
 // V.FRSTF	fossilized forest	a forest fossilized by geologic processes and now exposed at the earth's surface
+{
+    name: "fossilized forest",
+    value: "FRSTF",
+},
 // V.GROVE	grove	a small wooded area or collection of trees growing closely together, occurring naturally or deliberately planted
+{
+    name: "grove",
+    value: "GROVE",
+},
 // V.GRSLD	grassland	an area dominated by grass vegetation
+{
+    name: "grassland",
+    value: "GRSLD",
+},
 // V.GRVC	coconut grove	a planting of coconut trees
+{
+    name: "coconut grove",
+    value: "GRVC",
+},
 // V.GRVO	olive grove	a planting of olive trees
+{
+    name: "olive grove",
+    value: "GRVO",
+},
 // V.GRVP	palm grove	a planting of palm trees
+{
+    name: "palm grove",
+    value: "GRVP",
+},
 // V.GRVPN	pine grove	a planting of pine trees
+{
+    name: "pine grove",
+    value: "GRVPN",
+},
 // V.HTH	heath	an upland moor or sandy area dominated by low shrubby vegetation including heather
+{
+    name: "heath",
+    value: "HTH",
+},
 // V.MDW	meadow	a small, poorly drained area dominated by grassy vegetation
+{
+    name: "meadow",
+    value: "MDW",
+},
 // V.OCH	orchard(s)	a planting of fruit or nut trees
+{
+    name: "orchards",
+    value: "OCH",
+},
 // V.SCRB	scrubland	an area of low trees, bushes, and shrubs stunted by some environmental limitation
+{
+    name: "scrubland",
+    value: "SCRB",
+},
 // V.TREE	tree(s)	a conspicuous tree used as a landmark
+{
+    name: "trees",
+    value: "TREE",
+},
 // V.TUND	tundra	a marshy, treeless, high latitude plain, dominated by mosses, lichens, and low shrub vegetation under permafrost conditions
+{
+    name: "tundra",
+    value: "TUND",
+},
 // V.VIN	vineyard	a planting of grapevines
+{
+    name: "vineyard",
+    value: "VIN",
+},
 // V.VINS	vineyards	plantings of grapevines
+{
+    name: "vineyards",
+    value: "VINS",
+},
+];
