@@ -1,3 +1,6 @@
+// !!! LOAD THIS SCRIPT BEFORE THE MAIN SCRIPT.JS
+
+
 // test to make sure the link to this script is working
 // console.log("selectFeature.js is connected");
 

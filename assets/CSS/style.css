@@ -1,18 +1,47 @@
-#submitButton {
-    border: solid .5px;
-    box-shadow: 4px 2px;
+body {
+    font-family: "helvetica";
+    background: linear-gradient(azure grey); 
 }
 #submitButton span {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 #submitButton:hover {
-    padding-right: 25px;
+    /* padding-right: 25px; */
     background-image: url("../../images/map-bg.png");
     background-size: contain;
+    cursor: zoom-in;
 }
-#srch-term {
-    box-shadow: 4px 2px;
+#buttonLabel {
+    z-index: -1;
+}
+#logo {
+    font-family: 'Leckerli One', cursive;
+    background-image: url("../../images/dinoTranspng.png");
+    border-radius: 100%;
+    max-width: 100%;
+    position: relative;
+    bottom: 1em;
+
+}
+#name {
+    font-family: 'Leckerli One', cursive;
+    position: relative;
+    bottom: 34%;
+    left: 41%;
+}
+#descript {
+    padding-left: 6%;
+    padding-top: 2%;
+    font-family: 'Leckerli One';
+}
+#phonicTitle {
+    line-height: 0.5em;
+    font-family: 'Leckerli One', cursive;
+    position: relative;
+    bottom: 23%;
+    left: 8%;
+    font-size: 1.7em;
 }
