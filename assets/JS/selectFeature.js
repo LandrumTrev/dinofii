@@ -292,8 +292,16 @@ var featureArray = [
     value: "OVF",
 },
 // H.PND	pond	a small standing waterbody
+{
+    name: "pond",
+    value: "PND",
+},
 // H.PNDI	intermittent pond	
 // H.PNDN	salt pond	a small standing body of salt water often in a marsh or swamp, usually along a seacoast
+{
+    name: "salt pond",
+    value: "PNDN",
+},
 // H.PNDNI	intermittent salt pond(s)	
 // H.PNDS	ponds	small standing waterbodies
 {
@@ -860,74 +868,323 @@ var featureArray = [
 // U.CDAU	cordillera	an entire mountain system including the subordinate ranges, interior plateaus, and basins
 // U.CNSU	canyons	relatively narrow, deep depressions with steep sides, the bottom of which generally has a continuous slope
 // U.CNYU	canyon	a relatively narrow, deep depression with steep sides, the bottom of which generally has a continuous slope
+{
+    name: "canyons",
+    value: "CNSU",
+},
 // U.CRSU	continental rise	a gentle slope rising from oceanic depths towards the foot of a continental slope
+{
+    name: "continental rise",
+    value: "CRSU",
+},
 // U.DEPU	deep	a localized deep area within the confines of a larger feature, such as a trough, basin or trench
+{
+    name: "deep",
+    value: "DEPU",
+},
 // U.EDGU	shelf edge	a line along which there is a marked increase of slope at the outer margin of a continental shelf or island shelf
+{
+    name: "shelf",
+    value: "EDGU",
+},
 // U.ESCU	escarpment (or scarp)	an elongated and comparatively steep slope separating flat or gently sloping areas
+{
+    name: "escarpment",
+    value: "ESCU",
+},
 // U.FANU	fan	a relatively smooth feature normally sloping away from the lower termination of a canyon or canyon system
+{
+    name: "fan",
+    value: "FANU",
+},
 // U.FLTU	flat	a small level or nearly level area
+{
+    name: "flat",
+    value: "FLTU",
+},
 // U.FRZU	fracture zone	an extensive linear zone of irregular topography of the sea floor, characterized by steep-sided or asymmetrical ridges, troughs, or escarpments
+{
+    name: "fracture zone",
+    value: "FRZU",
+},
 // U.FURU	furrow	a closed, linear, narrow, shallow depression
+{
+    name: "furrow",
+    value: "FURU",
+},
 // U.GAPU	gap	a narrow break in a ridge or rise
+{
+    name: "gap ",
+    value: "GAPU",
+},
 // U.GLYU	gully	a small valley-like feature
+{
+    name: "gully",
+    value: "GLYU",
+},
 // U.HLLU	hill	an elevation rising generally less than 500 meters
 // U.HLSU	hills	elevations rising generally less than 500 meters
+{
+    name: "hills",
+    value: "HLSU",
+},
 // U.HOLU	hole	a small depression of the sea floor
+{
+    name: "hole",
+    value: "HOLU",
+},
 // U.KNLU	knoll	an elevation rising generally more than 500 meters and less than 1,000 meters and of limited extent across the summit
 // U.KNSU	knolls	elevations rising generally more than 500 meters and less than 1,000 meters and of limited extent across the summits
+{
+    name: "knolls",
+    value: "KNSU",
+},
 // U.LDGU	ledge	a rocky projection or outcrop, commonly linear and near shore
+{
+    name: "ledge",
+    value: "LDGU",
+},
 // U.LEVU	levee	an embankment bordering a canyon, valley, or seachannel
+{
+    name: "levee",
+    value: "LEVU",
+},
 // U.MESU	mesa	an isolated, extensive, flat-topped elevation on the shelf, with relatively steep sides
+{
+    name: "mesa",
+    value: "MESU",
+},
 // U.MNDU	mound	a low, isolated, rounded hill
+{
+    name: "mound",
+    value: "MNDU",
+},
 // U.MOTU	moat	an annular depression that may not be continuous, located at the base of many seamounts, islands, and other isolated elevations
+{
+    name: "moat",
+    value: "MOTU",
+},
 // U.MTU	mountain	a well-delineated subdivision of a large and complex positive feature
+{
+    name: "mountain",
+    value: "MTU",
+},
 // U.PKSU	peaks	prominent elevations, part of a larger feature, either pointed or of very limited extent across the summit
 // U.PKU	peak	a prominent elevation, part of a larger feature, either pointed or of very limited extent across the summit
+{
+    name: "peaks",
+    value: "PKSU",
+},
 // U.PLNU	plain	a flat, gently sloping or nearly level region
+{
+    name: "plain",
+    value: "PLNU",
+},
 // U.PLTU	plateau	a comparatively flat-topped feature of considerable extent, dropping off abruptly on one or more sides
+{
+    name: "plateau",
+    value: "PLTU",
+},
 // U.PNLU	pinnacle	a high tower or spire-shaped pillar of rock or coral, alone or cresting a summit
+{
+    name: "pinncale",
+    value: "PNLU",
+},
 // U.PRVU	province	a region identifiable by a group of similar physiographic features whose characteristics are markedly in contrast with surrounding areas
+{
+    name: "province",
+    value: "PRVU",
+},
 // U.RDGU	ridge	a long narrow elevation with steep sides
+{
+    name: "ridge",
+    value: "RDGU",
+},
 // U.RDSU	ridges	long narrow elevations with steep sides
 // U.RFSU	reefs	surface-navigation hazards composed of consolidated material
 // U.RFU	reef	a surface-navigation hazard composed of consolidated material
+{
+    name: "reef",
+    value: "RFU",
+},
 // U.RISU	rise	a broad elevation that rises gently, and generally smoothly, from the sea floor
+{
+    name: "rise",
+    value: "RISE",
+},
 // U.SCNU	seachannel	a continuously sloping, elongated depression commonly found in fans or plains and customarily bordered by levees on one or two sides
+{
+    name: "seachannel",
+    value: "SCNU",
+},
 // U.SCSU	seachannels	continuously sloping, elongated depressions commonly found in fans or plains and customarily bordered by levees on one or two sides
 // U.SDLU	saddle	a low part, resembling in shape a saddle, in a ridge or between contiguous seamounts
 // U.SHFU	shelf	a zone adjacent to a continent (or around an island) that extends from the low water line to a depth at which there is usually a marked increase of slope towards oceanic depths
+{
+    name: "shelf",
+    value: "SHFU",
+},
 // U.SHLU	shoal	a surface-navigation hazard composed of unconsolidated material
+{
+    name: "shoal",
+    value: "SHLU",
+},
 // U.SHSU	shoals	hazards to surface navigation composed of unconsolidated material
 // U.SHVU	shelf valley	a valley on the shelf, generally the shoreward extension of a canyon
+{
+    name: "shelf valley",
+    value: "SHVU",
+},
 // U.SILU	sill	the low part of a gap or saddle separating basins
+{
+    name: "sill",
+    value: "SILU",
+},
 // U.SLPU	slope	the slope seaward from the shelf edge to the beginning of a continental rise or the point where there is a general reduction in slope
+{
+    name: "slope",
+    value: "SLPU",
+},
 // U.SMSU	seamounts	elevations rising generally more than 1,000 meters and of limited extent across the summit
 // U.SMU	seamount	an elevation rising generally more than 1,000 meters and of limited extent across the summit
+{
+    name: "seamounts",
+    value: "SMU",
+},
 // U.SPRU	spur	a subordinate elevation, ridge, or rise projecting outward from a larger feature
+{
+    name: "spur",
+    value: "SPRU",
+},
 // U.TERU	terrace	a relatively flat horizontal or gently inclined surface, sometimes long and narrow, which is bounded by a steeper ascending slope on one side and by a steep descending slope on the opposite side
+{
+    name: "terrace",
+    value: "TERU",
+},
 // U.TMSU	tablemounts (or guyots)	seamounts having a comparatively smooth, flat top
+{
+    name: "tablemounts",
+    value: "TMSU",
+},
 // U.TMTU	tablemount (or guyot)	a seamount having a comparatively smooth, flat top
 // U.TNGU	tongue	an elongate (tongue-like) extension of a flat sea floor into an adjacent higher feature
+{
+    name: "tounge",
+    value: "TNGU",
+},
 // U.TRGU	trough	a long depression of the sea floor characteristically flat bottomed and steep sided, and normally shallower than a trench
 // U.TRNU	trench	a long, narrow, characteristically very deep and asymmetrical depression of the sea floor, with relatively steep sides
+{
+    name: "trench",
+    value: "TRNU",
+},
 // U.VALU	valley	a relatively shallow, wide depression, the bottom of which usually has a continuous gradient
 // U.VLSU	valleys	a relatively shallow, wide depression, the bottom of which usually has a continuous gradient
+{
+    name: "valley",
+    value: "VLSU",
+},
 // V.BUSH	bush(es)	a small clump of conspicuous bushes in an otherwise bare area
+{
+    name: "bushes",
+    value: "BUSH",
+},
 // V.CULT	cultivated area	an area under cultivation
+{
+    name: "cultivated",
+    value: "CULT",
+},
 // V.FRST	forest(s)	an area dominated by tree vegetation
+{
+    name: "forests",
+    value: "FRST",
+},
 // V.FRSTF	fossilized forest	a forest fossilized by geologic processes and now exposed at the earth's surface
+{
+    name: "fossilized forest",
+    value: "FRSTF",
+},
 // V.GROVE	grove	a small wooded area or collection of trees growing closely together, occurring naturally or deliberately planted
+{
+    name: "grove",
+    value: "GROVE",
+},
 // V.GRSLD	grassland	an area dominated by grass vegetation
+{
+    name: "grassland",
+    value: "GRSLD",
+},
 // V.GRVC	coconut grove	a planting of coconut trees
+{
+    name: "coconut grove",
+    value: "GRVC",
+},
 // V.GRVO	olive grove	a planting of olive trees
+{
+    name: "olive grove",
+    value: "GRVO",
+},
 // V.GRVP	palm grove	a planting of palm trees
+{
+    name: "palm grove",
+    value: "GRVP",
+},
 // V.GRVPN	pine grove	a planting of pine trees
+{
+    name: "pine grove",
+    value: "GRVPN",
+},
 // V.HTH	heath	an upland moor or sandy area dominated by low shrubby vegetation including heather
+{
+    name: "heath",
+    value: "HTH",
+},
 // V.MDW	meadow	a small, poorly drained area dominated by grassy vegetation
+{
+    name: "meadow",
+    value: "MDW",
+},
 // V.OCH	orchard(s)	a planting of fruit or nut trees
+{
+    name: "orchards",
+    value: "OCH",
+},
 // V.SCRB	scrubland	an area of low trees, bushes, and shrubs stunted by some environmental limitation
+{
+    name: "scrubland",
+    value: "SCRB",
+},
 // V.TREE	tree(s)	a conspicuous tree used as a landmark
+{
+    name: "trees",
+    value: "TREE",
+},
 // V.TUND	tundra	a marshy, treeless, high latitude plain, dominated by mosses, lichens, and low shrub vegetation under permafrost conditions
+{
+    name: "tundra",
+    value: "TUND",
+},
 // V.VIN	vineyard	a planting of grapevines
+{
+    name: "vineyard",
+    value: "VIN",
+},
 // V.VINS	vineyards	plantings of grapevines
+{
+    name: "vineyards",
+    value: "VINS",
+},
 ];
+
+//var x = document.getElementById("myAudio"); 
+
+//function playAudio() { 
+ //   x.play(); 
+//} 
+
+//function pauseAudio() { 
+ //   x.pause(); 
+//}
+
+//<audio id="myAudio">
+//  <source src=<iframe width="964" height="542" src="audio.dinosound"></audio>
