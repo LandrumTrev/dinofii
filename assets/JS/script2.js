@@ -26,18 +26,10 @@ $(document).ready(function () {
     // GET LOCATIONS MATCHING FEATURE CODES FROM GEONAMES search SERVICE (1 credit, limit 2,000/hr, 30,000/mo)
     // ============================================================================================================
 
-    // getFeatureName variables
-    // var featureName;
-    // var featureCountryName;
-    // var featureCountryCode;
-    // var featureLatitude;
-    // var featureLongitude;
-    // var featureLocation;
-
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=3&username=ghostfountain";
+        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -46,19 +38,31 @@ $(document).ready(function () {
             .then(function (response) {
 
 
-                for (var i = 0; i < response.geonames.length; i++) {
+                // array of random numbers of a certain length from a certain range
+                var number = Math.min(response.totalResultsCount, 1000);
+                var random = Array.from({
+                    length: 5
+                }, () => Math.floor(Math.random() * number));
+                
+                console.log(random);
+                console.log(response);
+
+
+                for (var i = 0; i < random.length; i++) {
+
+                    var rando = random[i];
 
                     var card = {};
 
-                    card.featureName = response.geonames[i].name;
-                    card.featureCountryCode = response.geonames[i].countryCode;
-                    card.featureLatitude = response.geonames[i].lat;
-                    card.featureLongitude = response.geonames[i].lng;
-                    card.featureLocation = response.geonames[i].fclName;
+                    card.featureName = response.geonames[rando].name;
+                    card.featureCountryCode = response.geonames[rando].countryCode;
+                    card.featureLatitude = response.geonames[rando].lat;
+                    card.featureLongitude = response.geonames[rando].lng;
+                    card.featureLocation = response.geonames[rando].fclName;
 
-                    if (response.geonames[i].countryName) {
+                    if (response.geonames[rando].countryName) {
 
-                        card.featureCountryName = response.geonames[i].countryName;
+                        card.featureCountryName = response.geonames[rando].countryName;
                         console.log("DESTINATION: " + card.featureName + ", " + card.featureCountryName);
 
                     } else {
@@ -66,9 +70,9 @@ $(document).ready(function () {
                         card.featureCountryName = "";
                         console.log("DESTINATION: " + card.featureName);
 
-                    }
+                }
 
-                    getPostalCodes(card);
+                getPostalCodes(card);
 
                 }
             });
@@ -81,13 +85,6 @@ $(document).ready(function () {
     // GET CLOSEST POSTAL CODE TO FEATURE LOCATION LAT+LONG COORDINATES FROM EZCMD API (limit 10,000 calls/month)
     // ==========================================================================================================
 
-    // getPostalCodes variables
-    // var nearPlaceName;
-    // var nearPlacePostalCode;
-    // var nearPlaceCountryCode;
-    // var nearPlaceCountryName;
-    // var nearPlaceDistance;
-
 
     function getPostalCodes(card) {
 
@@ -98,6 +95,8 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (response) {
+
+                console.log(response);
 
                 if (response.search_results.length > 0) {
 
@@ -142,10 +141,6 @@ $(document).ready(function () {
     // GET # OF WIFI HOTSPOTS BY POSTAL CODE FROM WIGLE API (service is beta, no set limits)
     // =====================================================================================
 
-    // getHotspots variables
-    // var nearPlaceWifi = "?";
-    // var listPostalCode;
-    // var listHotSpots
 
     // mini function to format thousands of WiFi numbers to k format
     function kFormatter(num) {
@@ -169,6 +164,7 @@ $(document).ready(function () {
             })
             .then(function (response) {
 
+                console.log(response);
 
                 for (var k = 0; k < response.postalCode.length; k++) {
 
@@ -183,7 +179,7 @@ $(document).ready(function () {
 
                     }
                 }
-                
+
                 buildCard(card);
 
             });
