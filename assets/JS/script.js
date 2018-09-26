@@ -43,9 +43,9 @@ $(document).ready(function () {
                 var random = Array.from({
                     length: 2
                 }, () => Math.floor(Math.random() * number));
-                
+
                 console.log(random);
-                console.log(response);
+                // console.log(response);
 
 
                 for (var i = 0; i < random.length; i++) {
@@ -59,20 +59,21 @@ $(document).ready(function () {
                     card.featureLatitude = response.geonames[rando].lat;
                     card.featureLongitude = response.geonames[rando].lng;
                     card.featureLocation = response.geonames[rando].fclName;
+                    card.featureType = response.geonames[rando].fcodeName;
 
                     if (response.geonames[rando].countryName) {
 
                         card.featureCountryName = response.geonames[rando].countryName;
-                        console.log("DESTINATION: " + card.featureName + ", " + card.featureCountryName);
+                        // console.log("DESTINATION: " + card.featureName + ", " + card.featureCountryName);
 
                     } else {
 
                         card.featureCountryName = "";
-                        console.log("DESTINATION: " + card.featureName);
+                        // console.log("DESTINATION: " + card.featureName);
 
-                }
+                    }
 
-                getPostalCodes(card);
+                    getPostalCodes(card);
 
                 }
             });
@@ -105,8 +106,9 @@ $(document).ready(function () {
                     card.nearPlaceCountryCode = response.search_results[0].country_code;
                     card.nearPlaceCountryName = response.search_results[0].country_name;
                     card.nearPlaceDistance = Math.round(response.search_results[0].distance * 10) / 10;
+                    card.nearPlaceLatLong = response.search_results[0].coords;
 
-                    console.log("CLOSEST CITY: " + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)");
+                    // console.log("CLOSEST CITY: " + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)");
 
                     getHotspots(card);
 
@@ -117,17 +119,18 @@ $(document).ready(function () {
                     card.nearPlaceCountryCode = "";
                     card.nearPlaceCountryName = "";
                     card.nearPlaceDistance = "?";
+                    card.nearPlaceLatLong = "";
 
                     getHotspots(card);
 
-                    console.log("CLOSEST CITY: (" + card.nearPlaceName + ")");
+                    // console.log("CLOSEST CITY: (" + card.nearPlaceName + ")");
 
                     // return;
                 } else {
 
                     getHotspots(card);
 
-                    console.log("CLOSEST CITY: no info");
+                    // console.log("CLOSEST CITY: no info");
                     // return;
                 }
 
@@ -164,7 +167,7 @@ $(document).ready(function () {
             })
             .then(function (response) {
 
-                console.log(response);
+                // console.log(response);
 
                 for (var k = 0; k < response.postalCode.length; k++) {
 
@@ -218,13 +221,11 @@ $(document).ready(function () {
     function buildCard(card) {
 
 
-        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'>" + card.featureName + " : " + card.featureCountryName + "</h5><span class='font-weight-light' style='display:inline;float:right'>" + card.featureLatitude + ", " + card.featureLongitude + "</span></div><div class='card-body text-dark p-2'><span class='font-weight-light'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</span><a href='https://wigle.net/map?maplat=" + card.featureLatitude + "&maplon=" + card.featureLongitude + "&mapzoom=12&coloring=density' target='_blank'><i class='fas fa-globe float-right text-dark' style='margin-left:10px;padding-top:3px;'></i></a><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:3px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
-
-
+        $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'><a href='https://www.google.com/search?q=" + card.featureName + "' target='_blank' style='color:red;'>" + card.featureName + "</a> : <a href='https://www.google.com/search?q=" + card.featureCountryName + "' target='_blank'>" + card.featureCountryName + "</a> (<a href='https://www.google.com/search?q=" + card.featureType + "' target='_blank' style='color:lightseagreen'>" + card.featureType + "</a>)</h5><span class='font-weight-light' style='display:inline;float:right'><a href='https://www.google.com/maps/@" + card.featureLatitude + "," + card.featureLongitude + ",15z' target='_blank'>" + card.featureLatitude + ", " + card.featureLongitude + "</a></span></div><div class='card-body text-dark p-2'><span class='font-weight-light'><a href='https://www.google.com/maps/dir/?api=1&origin=" + card.nearPlaceLatLong + "&destination=" + card.featureLatitude + "," + card.featureLongitude + "' target='_blank'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</a></span><a href='https://wigle.net/map?maplat=" + card.featureLatitude + "&maplon=" + card.featureLongitude + "&mapzoom=12&coloring=density' target='_blank'><i class='fas fa-globe float-right' style='margin-left:10px;padding-top:3px;'></i></a><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:3px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
         
+
     }
 
     // END jQUERY FUNCTION
 });
 // ==============================
-
