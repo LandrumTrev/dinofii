@@ -2,13 +2,13 @@ body {
     font-family: "helvetica";
     background: linear-gradient(azure grey); 
 }
-#submitButton span {
+#search_btn span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.7s;
 }
-#submitButton:hover {
+#search_btn:hover {
     /* padding-right: 25px; */
     background-image: url("../../images/map-bg.png");
     background-size: contain;
@@ -24,7 +24,7 @@ body {
     max-width: 100%;
     position: relative;
     bottom: 1em;
-
+   
 }
 #name {
     font-family: 'Leckerli One', cursive;
@@ -58,4 +58,10 @@ body {
 }
 h3 {
     text-align: center;
+}
+#p {
+    display: none;
+}
+#logofade{
+    display: none;
 }
