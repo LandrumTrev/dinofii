@@ -13,12 +13,36 @@ $(document).ready(function () {
 
     function getFeatureCode() {
 
-        var fCode = $("form").serializeArray();
+        var fCode = $("#feature_options").serializeArray();
 
         featureCode = fCode[0].value;
+
+        console.log(featureCode);
     }
 
-    $("select").on("change", getFeatureCode);
+    $("#feature_options").on("change", getFeatureCode);
+
+
+
+    // ============================================================================================================
+    // GET THE COUNTRY CODE FROM THE VALUE OF THE OPTION SELECTED IN THE DROPDOWN LIST
+    // ============================================================================================================
+
+    // set variable to stand for the country code of country dropdown, to narrow the search
+    var countryCC;
+
+    function getCountryCC() {
+
+        var cCode = $("#country_options").serializeArray();
+
+        countryCC = cCode[0].value;
+
+        console.log(countryCC);
+
+    }
+
+    $("#country_options").on("change", getCountryCC);
+
 
 
 
@@ -29,7 +53,8 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
+
+        var geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&country=" + countryCC + "&maxRows=1000&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -44,7 +69,7 @@ $(document).ready(function () {
                     length: 1
                 }, () => Math.floor(Math.random() * number));
 
-                // console.log(random);
+                console.log(random);
                 console.log(response);
 
 
