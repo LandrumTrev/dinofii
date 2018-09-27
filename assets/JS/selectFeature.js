@@ -9,7 +9,7 @@ $(document).ready(function () {
     // =========================================================
 
     var featureArray = [{
-            name: "select a feature",
+            name: "SELECT FEATURE",
             value: "",
         },
         // =====================================================
@@ -18,6 +18,18 @@ $(document).ready(function () {
         // =====================================================
         // =====================================================
         // H.AIRS	seaplane landing area	a place on a waterbody where floatplanes land and take off
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; STREAMS + LAKES",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         {
             name: "seaplane landing area",
             value: "AIRS",
@@ -539,8 +551,8 @@ $(document).ready(function () {
         },
         // H.SPNS	sulphur spring(s)	a place where sulphur ground water flows naturally out of the ground
         {
-            name: "SPNS",
-            value: "sulphur spring",
+            name: "sulphur spring",
+            value: "SPNS",
         },
         // H.SPNT	hot spring(s)	a place where hot ground water flows naturally out of the ground
         {
@@ -707,6 +719,18 @@ $(document).ready(function () {
         // L. PARKS, AREA, ...
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; PARKS + AREAS",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        },
         // L.AGRC	agricultural colony	a tract of land set aside for agricultural settlement
         {
             name: "agricultural colony",
@@ -952,6 +976,18 @@ $(document).ready(function () {
         // P. CITY, VILLAGE, ...
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; CITIES + VILLAGES",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // P.PPL	populated place	a city, town, village, or other agglomeration of buildings where people live and work
         {
             name: "populated place",
@@ -1047,6 +1083,18 @@ $(document).ready(function () {
         // R. ROAD, RAILROAD
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; ROADS + RAILROADS",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // R.CSWY	causeway	a raised roadway across wet ground or shallow water
         {
             name: "causeway",
@@ -1162,6 +1210,18 @@ $(document).ready(function () {
         // S. SPOT, BUILDING, FARM, ...
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; SPOTS, BUILDINGS + FARMS",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // S.ADMF	administrative facility	a government building
         {
             name: "administrative facility",
@@ -2432,6 +2492,18 @@ $(document).ready(function () {
         // T. MOUNTAIN, HILL, ROCK, ...
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; MOUNTAINS, HILLS + ROCKS",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // T.ASPH	asphalt lake	a small basin containing naturally occurring asphalt
         {
             name: "asphalt lake",
@@ -2927,6 +2999,18 @@ $(document).ready(function () {
         // U. UNDERSEA
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; UNDERWATER",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // U.APNU	apron	a gentle slope, with a generally smooth surface, particularly found around groups of islands and seamounts
         {
             name: "apron",
@@ -3238,6 +3322,18 @@ $(document).ready(function () {
         // V. FOREST, HEATH, ...
         // =====================================================
         // =====================================================
+        {
+            name: "",
+            value: "",
+        },
+        {
+            name: "&dHar; FOREST + HEATH",
+            value: "",
+        },
+        {
+            name: "",
+            value: "",
+        }, 
         // V.BUSH	bush(es)	a small clump of conspicuous bushes in an otherwise bare area
         {
             name: "bushes",
