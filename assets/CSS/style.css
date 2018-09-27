@@ -1,6 +1,7 @@
-body {
+#indexBody {
     font-family: "helvetica";
     background: linear-gradient(azure grey); 
+    margin-top: 2em;
 }
 #search_btn span {
     cursor: pointer;
@@ -56,6 +57,7 @@ body {
     border: solid 2px;
     margin-bottom: 10%;
     background-color: whitesmoke;
+    padding: 0 3em;
 }
 h3 {
     text-align: center;
@@ -80,4 +82,11 @@ h3 {
     background-size: cover;
     cursor: pointer;
     background-color: lightseagreen;
+}
+/* #feature_input {
+    top: 1em;
+} */
+#button-addon1 {
+    border: none;
+    color: black;
 }
