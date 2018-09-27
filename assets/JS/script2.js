@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "http://api.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
+        var geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
 
         $.ajax({
                 url: geonamesSearchFeatures,
