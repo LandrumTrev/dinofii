@@ -34,9 +34,32 @@
 
             <div class="col-lg-4 float-md-right" style="float:right">
                 <form>
+
+                    <div id="feature_input" class="input-group">
+
+                        <select name="feature" class="custom-select" id="country_options">
+                            <option value="XX" selected>EARTH</option>
+                            <option value="CY">Cyprus</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="AR">Argentina</option>
+                            <option value="AM">Armenia</option>
+                            <option value="AU">Australia</option>
+                            <option value="KE">Kenya</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="JP">Japan</option>
+                            <option value="NO">Norway</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="ES">Spain</option>
+                            <option value="DE">Germany</option>
+                        </select>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">COUNTRY</span>
+                        </div>
+                    </div>
+                    <br>
                     <div id="feature_input" class="input-group">
                         <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1" style="background:  #f8f9fa;">CLEAR</button>
+                            <button class="btn btn-outline-secondary" type="button" id="clear_button" style="background:  #f8f9fa;">CLEAR</button>
                         </div>
 
                         <select name="feature" class="custom-select" id="feature_options">
@@ -44,15 +67,17 @@
                             <option value="RSRT">resort</option>
                             <option value="SPA">spa</option>
                             <option value="FT">fort</option> -->
-
                         </select>
 
                         <div class="input-group-append">
-                            <input id="search_btn" type="submit" class="btn btn-light" name="submit" value="SEARCH">
+                            <input id="search_btn" type="submit" class="btn btn-secondary" name="submit" value="SEARCH">
                         </div>
                     </div>
+
+
                 </form>
             </div>
+
 
             <div id="descript" class="col-lg-4">
                 <p id="p"> A travel planner for the Digital Nomad. Search land features or experiences and receive destinations with
@@ -105,7 +130,7 @@
 
                 <!-- Copyright -->
                 <div class=" footer-copyright text-center py-3 " style=" background:#7fbdae; color:white ">
-                    ©2018 &nbsp;| 
+                    ©2018 &nbsp;|
                     <a href="About.html" style="color:white">&nbsp;ABOUT</a>
                 </div>
                 <!-- Copyright -->

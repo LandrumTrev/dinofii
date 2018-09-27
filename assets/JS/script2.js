@@ -2,7 +2,7 @@
 // ==============================
 $(document).ready(function () {
 
-
+    // console.log("Thundercats are go!");
 
     // ============================================================================================================
     // GET THE FEATURE CODE FROM THE VALUE OF THE OPTION SELECTED IN THE DROPDOWN LIST
@@ -13,12 +13,36 @@ $(document).ready(function () {
 
     function getFeatureCode() {
 
-        var fCode = $("form").serializeArray();
+        var fCode = $("#feature_options").serializeArray();
 
         featureCode = fCode[0].value;
+
+        console.log(featureCode);
     }
 
-    $("select").on("change", getFeatureCode);
+    $("#feature_options").on("change", getFeatureCode);
+
+
+
+    // ============================================================================================================
+    // GET THE COUNTRY CODE FROM THE VALUE OF THE OPTION SELECTED IN THE DROPDOWN LIST
+    // ============================================================================================================
+
+    // set variable to stand for the country code of country dropdown, to narrow the search
+    var countryCC = "XX";
+
+    function getCountryCC() {
+
+        var cCode = $("#country_options").serializeArray();
+
+        countryCC = cCode[0].value;
+
+        console.log(countryCC);
+
+    }
+
+    $("#country_options").on("change", getCountryCC);
+
 
 
 
@@ -29,7 +53,18 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
-        var geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
+        var geonamesSearchFeatures;
+
+        if (countryCC === "XX") {
+
+            geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
+
+        } else {
+
+            geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&country=" + countryCC + "&maxRows=1000&username=ghostfountain";
+
+        }
+
 
         $.ajax({
                 url: geonamesSearchFeatures,
@@ -41,11 +76,11 @@ $(document).ready(function () {
                 // array of random numbers of a certain length from a certain range
                 var number = Math.min(response.totalResultsCount, 1000);
                 var random = Array.from({
-                    length: 2
+                    length: 1
                 }, () => Math.floor(Math.random() * number));
 
                 console.log(random);
-                // console.log(response);
+                console.log(response);
 
 
                 for (var i = 0; i < random.length; i++) {
@@ -222,9 +257,23 @@ $(document).ready(function () {
 
 
         $("#card_container").append("<div class='card border-dark mb-3'><div class='card-header p-2'><h5 style='display:inline;'><a href='https://www.google.com/search?q=" + card.featureName + "' target='_blank' style='color:red;'>" + card.featureName + "</a> : <a href='https://www.google.com/search?q=" + card.featureCountryName + "' target='_blank'>" + card.featureCountryName + "</a> (<a href='https://www.google.com/search?q=" + card.featureType + "' target='_blank' style='color:lightseagreen'>" + card.featureType + "</a>)</h5><span class='font-weight-light' style='display:inline;float:right'><a href='https://www.google.com/maps/@" + card.featureLatitude + "," + card.featureLongitude + ",15z' target='_blank'>" + card.featureLatitude + ", " + card.featureLongitude + "</a></span></div><div class='card-body text-dark p-2'><span class='font-weight-light'><a href='https://www.google.com/maps/dir/?api=1&origin=" + card.nearPlaceLatLong + "&destination=" + card.featureLatitude + "," + card.featureLongitude + "' target='_blank'>" + card.nearPlaceName + " " + card.nearPlaceCountryCode + " " + card.nearPlacePostalCode + " (" + card.nearPlaceDistance + " km)</a></span><a href='https://wigle.net/map?maplat=" + card.featureLatitude + "&maplon=" + card.featureLongitude + "&mapzoom=12&coloring=density' target='_blank'><i class='fas fa-globe float-right' style='margin-left:10px;padding-top:3px;'></i></a><i class='float-right fas fa-wifi' style='margin-left:10px;padding-top:3px;'></i><span class='float-right font-weight-bold'>" + card.nearPlaceWifi + "</span></div></div>");
-        
+
 
     }
+
+
+    // ============================================================================================================
+    // CLEAR BUTTON: CLEARS THE CURRENTLY LISTED SEARCH RESULTS=
+    // ============================================================================================================
+
+    $("#clear_button").on("click", function () {
+
+        event.preventDefault();
+
+        $("#card_container").html("");
+
+    });
+
 
     // END jQUERY FUNCTION
 });
