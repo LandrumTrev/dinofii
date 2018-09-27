@@ -29,7 +29,7 @@ $(document).ready(function () {
     // ============================================================================================================
 
     // set variable to stand for the country code of country dropdown, to narrow the search
-    var countryCC;
+    var countryCC = "XX";
 
     function getCountryCC() {
 
@@ -53,8 +53,18 @@ $(document).ready(function () {
 
     function getFeatureName() {
 
+        var geonamesSearchFeatures;
 
-        var geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&country=" + countryCC + "&maxRows=1000&username=ghostfountain";
+        if (countryCC === "XX") {
+
+            geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&maxRows=1000&username=ghostfountain";
+
+        } else {
+
+            geonamesSearchFeatures = "https://secure.geonames.org/searchJSON?featureCode=" + featureCode + "&country=" + countryCC + "&maxRows=1000&username=ghostfountain";
+
+        }
+
 
         $.ajax({
                 url: geonamesSearchFeatures,
