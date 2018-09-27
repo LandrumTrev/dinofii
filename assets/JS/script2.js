@@ -226,6 +226,20 @@ $(document).ready(function () {
 
     }
 
+
+    // ============================================================================================================
+    // CLEAR BUTTON: CLEARS THE CURRENTLY LISTED SEARCH RESULTS=
+    // ============================================================================================================
+
+    $("#clear_button").on("click", function () {
+
+        event.preventDefault();
+
+        $("#card_container").html("");
+
+    });
+
+
     // END jQUERY FUNCTION
 });
 // ==============================
