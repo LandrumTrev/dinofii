@@ -232,7 +232,7 @@ $(document).ready(function () {
     // APPLICATION'S TOP LEVEL FUNCTIONALITY: SET FEATURE TO SEARCH, and SEARCH BUTTON FUNCTION
     // ============================================================================================================
 
-    $("#search_btn").on("click", function () {
+    $("#search_btn").on("click", function (event) {
 
         event.preventDefault();
 
@@ -266,7 +266,7 @@ $(document).ready(function () {
     // CLEAR BUTTON: CLEARS THE CURRENTLY LISTED SEARCH RESULTS=
     // ============================================================================================================
 
-    $("#clear_button").on("click", function () {
+    $("#clear_button").on("click", function (event) {
 
         event.preventDefault();
 
