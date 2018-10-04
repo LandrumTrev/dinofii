@@ -1,0 +1,177 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background:
+        linear-gradient(217deg, rgba(183, 197, 208, .8), rgba(183, 197, 208, 0) 70.71%),
+        linear-gradient(127deg, rgba(220, 235, 193, .8), rgba(220, 235, 193, 0) 70.71%),
+        linear-gradient(336deg, rgba(208, 198, 183, .8), rgba(208, 198, 183, 0) 70.71%),
+        url(../images/dfbkg.jpg) center center;
+    background-size: cover;
+
+}
+
+#head_container {
+    /* border: .1px red solid; */
+}
+
+
+/* LOGO AND DESCRIPTION STYLES BELOW */
+
+header {
+    background-color: white;
+    top: 0;
+}
+
+#logo_intro {
+    /* border: .1px red solid; */
+}
+
+#logo_img {
+    width: 100%;
+}
+
+#logo_col {
+    /* border: .1px red solid; */
+}
+
+#intro_col {
+    padding-top: 20px;
+    font-size: 1rem;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    letter-spacing: .03rem;
+    line-height: 125%;
+    font-weight: 300;
+    color: #444;
+}
+
+#headline {
+    font-weight: 700;
+    color: rgb(121, 27, 27);
+    /* color: rgb(162, 155, 99); */
+}
+
+/* LOGO AND DESCRIPTION STYLES ABOVE */
+
+/* SEARCH SELECT STYLES BELOW */
+
+#search_section {
+    /* background-color: whitesmoke; */
+}
+
+#search_container {
+    /* background-color: beige; */
+}
+
+#local_col {
+    /* background-color: honeydew; */
+}
+
+#feature_col {
+    /* background-color: aliceblue; */
+}
+
+/* SEARCH SELECT STYLES ABOVE */
+
+
+/* SEARCH RESULTS STYLES BELOW */
+
+main {
+    background-color: white;
+    height: 100vh;
+}
+
+#results_header {
+    height: 30px;
+    padding-top: 5px;
+}
+
+/* SEARCH RESULTS STYLES ABOVE */
+
+
+
+/* FOOTER STYLES BELOW */
+
+footer {
+    background-color: grey;
+    position: fixed;
+    height: 20px;
+    bottom: 0px;
+}
+
+#license_about {
+    /* border: .1px red solid; */
+}
+
+#about_col {
+    /* border: .1px red solid; */
+}
+
+#about_text {
+    color: white;
+    float: left;
+    font-family: 'Abel', sans-serif;
+    font-weight: 200;
+    letter-spacing: .05rem;
+    font-size: .7rem;
+}
+
+#license_col {
+    /* border: .1px red solid; */
+}
+
+#license_text {
+    float: right;
+    color: white;
+    font-family: 'Abel', sans-serif;
+    font-weight: 200;
+    letter-spacing: .05rem;
+    font-size: .7rem;
+}
+
+
+/* FOOTER STYLES ABOVE */
+
+
+
+/* MEDIA QUERIES BELOW */
+
+/* Extra small devices (phones, 575px and down) */
+@media only screen and (max-width: 575px) {
+
+    #intro_col {
+        padding-top: 5px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+
+    #intro_col {
+        padding-top: 30px;
+        font-size: .95rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    #intro_col {
+        font-size: 1.2rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    #intro_col {
+        font-size: 1.6rem;
+    }
+}
+
+/* MEDIA QUERIES ABOVE */
