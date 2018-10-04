@@ -99,11 +99,11 @@ $(document).ready(function () {
         //     name: "navigation channel",
         //     value: "CHNN",
         // },
-        // H.CNFL	confluence	a place where two or more streams or intermittent streams flow together
-        {
-            name: "confluence",
-            value: "CNFL",
-        },
+        // // H.CNFL	confluence	a place where two or more streams or intermittent streams flow together
+        // {
+        //     name: "confluence",
+        //     value: "CNFL",
+        // },
         // H.CNL	canal	an artificial watercourse
         {
             name: "canal",
@@ -474,11 +474,11 @@ $(document).ready(function () {
         //     name: "icecap ridge",
         //     value: "RDGG",
         // },
-        // H.RDST	roadstead	an open anchorage affording less protection than a harbor
-        {
-            name: "roadstead",
-            value: "RDST",
-        },
+        // // H.RDST	roadstead	an open anchorage affording less protection than a harbor
+        // {
+        //     name: "roadstead",
+        //     value: "RDST",
+        // },
         // H.RF	reef(s)	a surface-navigation hazard composed of consolidated material
         {
             name: "reef",
@@ -519,11 +519,11 @@ $(document).ready(function () {
             name: "ravine",
             value: "RVN",
         },
-        // H.SBKH	sabkha(s)	a salt flat or salt encrusted plain subject to periodic inundation from flooding or high tides
-        {
-            name: "sabkha",
-            value: "SBKH",
-        },
+        // // H.SBKH	sabkha(s)	a salt flat or salt encrusted plain subject to periodic inundation from flooding or high tides
+        // {
+        //     name: "sabkha",
+        //     value: "SBKH",
+        // },
         // H.SD	sound	a long arm of the sea forming a channel between the mainland and an island or islands; or connecting two larger bodies of water
         {
             name: "sound",
@@ -639,11 +639,11 @@ $(document).ready(function () {
         //     name: "irrigation system",
         //     value: "SYSI",
         // },
-        // H.TNLC	canal tunnel	a tunnel through which a canal passes
-        {
-            name: "canal tunnel",
-            value: "TNLC",
-        },
+        // // H.TNLC	canal tunnel	a tunnel through which a canal passes
+        // {
+        //     name: "canal tunnel",
+        //     value: "TNLC",
+        // },
         // H.WAD	wadi	a valley or ravine, bounded by relatively steep banks, which in the rainy season becomes a watercourse; found primarily in North Africa and the Middle East
         {
             name: "wadi",
@@ -731,11 +731,11 @@ $(document).ready(function () {
             name: "",
             value: "",
         },
-        // L.AGRC	agricultural colony	a tract of land set aside for agricultural settlement
-        {
-            name: "agricultural colony",
-            value: "AGRC",
-        },
+        // // L.AGRC	agricultural colony	a tract of land set aside for agricultural settlement
+        // {
+        //     name: "agricultural colony",
+        //     value: "AGRC",
+        // },
         // L.AMUS	amusement park	Amusement Park are theme parks, adventure parks offering entertainment, similar to funfairs but with a fix location
         {
             name: "amusement park",
@@ -791,11 +791,11 @@ $(document).ready(function () {
             name: "coast",
             value: "CST",
         },
-        // L.CTRB	business center	a place where a number of businesses are located
-        {
-            name: "business center",
-            value: "CTRB",
-        },
+        // // L.CTRB	business center	a place where a number of businesses are located
+        // {
+        //     name: "business center",
+        //     value: "CTRB",
+        // },
         // // L.DEVH	housing development	a tract of land on which many houses of similar design are built according to a development plan
         // {
         //     name: "housing development",
@@ -816,11 +816,11 @@ $(document).ready(function () {
         //     name: "gasfield",
         //     value: "GASF",
         // },
-        // L.GRAZ	grazing area	an area of grasses and shrubs used for grazing
-        {
-            name: "grazing area",
-            value: "GRAZ",
-        },
+        // // L.GRAZ	grazing area	an area of grasses and shrubs used for grazing
+        // {
+        //     name: "grazing area",
+        //     value: "GRAZ",
+        // },
         // L.GVL	gravel area	an area covered with gravel
         {
             name: "gravel area",
@@ -831,11 +831,11 @@ $(document).ready(function () {
         //     name: "industrial area",
         //     value: "INDS",
         // },
-        // L.LAND	arctic land	a tract of land in the Arctic
-        {
-            name: "arctic land",
-            value: "LAND",
-        },
+        // // L.LAND	arctic land	a tract of land in the Arctic
+        // {
+        //     name: "arctic land",
+        //     value: "LAND",
+        // },
         // // L.LCTY	locality	a minor area or place of unspecified or mixed character and indefinite boundaries
         // {
         //     name: "locality",
@@ -941,11 +941,11 @@ $(document).ready(function () {
         //     name: "economic region",
         //     value: "RGNE",
         // },
-        // // L.RGNH	historical region	a former historic area distinguished by one or more observable physical or cultural characteristics
-        // {
-        //     name: "historical region",
-        //     value: "RGNH",
-        // },
+        // L.RGNH	historical region	a former historic area distinguished by one or more observable physical or cultural characteristics
+        {
+            name: "historical region",
+            value: "RGNH",
+        },
         // L.RGNL	lake region	a tract of land distinguished by numerous lakes
         {
             name: "lake region",
@@ -2609,11 +2609,11 @@ $(document).ready(function () {
             name: "crater",
             value: "CRTR",
         },
-        // T.CUET	cuesta(s)	an asymmetric ridge formed on tilted strata
-        {
-            name: "cuesta",
-            value: "CUET",
-        },
+        // // T.CUET	cuesta(s)	an asymmetric ridge formed on tilted strata
+        // {
+        //     name: "cuesta",
+        //     value: "CUET",
+        // },
         // T.DLTA	delta	a flat plain formed by alluvial deposits at the mouth of a stream
         {
             name: "delta",
@@ -2694,11 +2694,11 @@ $(document).ready(function () {
             name: "rock desert",
             value: "HMDA",
         },
-        // T.INTF	interfluve	a relatively undissected upland between adjacent stream valleys
-        {
-            name: "interfluve",
-            value: "INTF",
-        },
+        // // T.INTF	interfluve	a relatively undissected upland between adjacent stream valleys
+        // {
+        //     name: "interfluve",
+        //     value: "INTF",
+        // },
         // T.ISL	island	a tract of land, smaller than a continent, surrounded by water at high water
         {
             name: "island",
@@ -2839,11 +2839,11 @@ $(document).ready(function () {
         //     name: "section of plateau",
         //     value: "PLATX",
         // },
-        // T.PLDR	polder	an area reclaimed from the sea by diking and draining
-        {
-            name: "polder",
-            value: "PLDR",
-        },
+        // // T.PLDR	polder	an area reclaimed from the sea by diking and draining
+        // {
+        //     name: "polder",
+        //     value: "PLDR",
+        // },
         // T.PLN	plain(s)	an extensive area of comparatively level to gently undulating land, lacking surface irregularities, and usually adjacent to a higher area
         {
             name: "plains",
@@ -3091,11 +3091,11 @@ $(document).ready(function () {
             name: "underwater flat",
             value: "FLTU",
         },
-        // U.FRZU	fracture zone	an extensive linear zone of irregular topography of the sea floor, characterized by steep-sided or asymmetrical ridges, troughs, or escarpments
-        {
-            name: "fracture zone",
-            value: "FRZU",
-        },
+        // // U.FRZU	fracture zone	an extensive linear zone of irregular topography of the sea floor, characterized by steep-sided or asymmetrical ridges, troughs, or escarpments
+        // {
+        //     name: "fracture zone",
+        //     value: "FRZU",
+        // },
         // // U.FURU	furrow	a closed, linear, narrow, shallow depression
         // {
         //     name: "underwater furrow",
