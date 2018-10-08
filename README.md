@@ -18,5 +18,7 @@ _________________________________________________
 
 > Happy trails!
 
-##### ©2018 Dinofii
-##### Nicholas Angelo Batten, Mohammed Alzuhari, Omega James, Rich Trevillian
+###### ©2018 Dinofii
+###### Nicholas Angelo Batten, Mohammed Alzuhari, Omega James, Rich Trevillian
+###### University of Richmond, Full Stack Web Development Bootcamp
+###### 2018-09-27
