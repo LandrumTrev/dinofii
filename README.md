@@ -1,5 +1,5 @@
 # Dinofii
-##### Random point-of-interest finder, search by country/region and subject
+##### Global regional-search random point-of-interest finder, with directions and local wifi maps.
 
 JavaScript, jQuery, HTML, CSS, Bootstrap, Google Fonts, Font Awesome, GitHub, AJAX, APIs, responsive web design (RWD), audio events. Aggregates and synchronizes async data from 3 different APIs (geoNames, ezcmd, and Wigle) and generates several custom map location and search engine URLs for each result.
 _________________________________________________
